@@ -19,17 +19,9 @@ import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
-master_doc = 'index'
-project = 'PICLas Testing'
+project = 'PICLas User Guide'
 copyright = '2021, Stephen Copplestone'
 author = 'Institute for Aerodynamics and Gas Dynamics (University of Stuttgart), Institute for Space Systems (University of Stuttgart), boltzplatz - Numerical Plasma Dynamics'
-# latex config
-latex_documents = [
-    (master_doc, 'foo.tex', 'Project',
-     author.replace(', ', '\\and ').replace(' and ', '\\and and '),
-     'manual'),
-]
-
 
 # -- General configuration ---------------------------------------------------
 
@@ -82,5 +74,6 @@ bibtex_bibfiles = ['../references.bib']
 # Make sure the target is unique
 autosectionlabel_prefix_document = True
 
+# -- Table and Figure labelling ----------------------------------------------
 # Activate using: {numref}`tab:some-name` -> Table 1
 numfig = True
