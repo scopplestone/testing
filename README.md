@@ -1,6 +1,4 @@
-<!--<img src="docs/logo.png" width="582" height="287">-->
-
-![alt](docs/logo.png)
+<img src="docs/logo.png" width="582" height="287">
 
 # Welcome to PICLas
 
