@@ -4,7 +4,8 @@ The following chapter describes the installation procedure on a Linux machine re
 of required prerequisites, setting up MPI and HDF5. Please note that high-performance clusters usually have a module environment,
 where you have to load the appropriate modules instead of compiling them yourself. The module configuration for some of the clusters
 used by the research group are given in Chapter {ref}`080_cluster_guide:Cluster Guidelines`.
-In that case, you can jump directly to the description of the download and installation procedure of PICLas in Section {sec:download_source}.
+In that case, you can jump directly to the description of the download and installation procedure of PICLas in Section
+{ref}`sec:optaining-the-source`.
 
 ## Prerequisites
 **PICLas** has been tested on various Linux distributions. This includes Ubuntu 14.04 LTS, 16.04 LTS and 18.04 LTS, 20.04 LTS
@@ -89,6 +90,7 @@ Additional packages are required starting at specific versions of the GCC compil
 |                  |        libmpc-dev        |
 
 
+(sec:installing-mpi)=
 ### Installing/setting up OpenMPI
 
 PICLas requires the installation of MPI with properly setup environment variables for parallel computations. The recommended MPI
@@ -147,6 +149,7 @@ If your CMake version is above 3.9.X, CMake uses a new findPackage routine, requ
 
 For convenience, you can add these lines to your `.bashrc`.
 
+(sec:optaining-the-source)=
 ## Obtaining the source
 
 The **PICLas** repository is available at GitHub. To obtain the most recent version you have two possibilities:
@@ -161,7 +164,7 @@ The **PICLas** repository is available at GitHub. To obtain the most recent vers
     tar xzf master.tar.gz
 
 Note that cloning **PICLas** from GitHub may not be possible on some machines, as e.g. the HLRS at the University of Stuttgart
-restricts internet access. Please refer to section \ref{sec:cloninghlrs} of this user guide.
+restricts internet access. Please refer to section {ref}`sec:cloning-at-hlrs` of this user guide.
 
 ## Compiling the code
 
@@ -176,6 +179,7 @@ restricts internet access. Please refer to section \ref{sec:cloninghlrs} of this
 For a list of all compiler options visit Section {ref}`sec:compiler-options`. Finally, the executables **PICLas** and **piclas2vtk**
 are contained in your **PICLas** directory in `build/bin/`.
 
+(sec:directory-paths)=
 ### Directory paths
 
 In the following, we write `$PICLASROOT` as a substitute for the path to the **PICLas** repository. Please replace `$PICLASROOT`

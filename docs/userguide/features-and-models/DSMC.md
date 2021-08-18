@@ -321,6 +321,7 @@ A simple ambipolar diffusion model in order to be able to ignore the self-induce
 
 Electrons are now attached to and move with the ions, although, they still have their own velocity vector and are part of the pairing and collisional process (including chemical reactions). The velocity vector of the ion species is not additionally corrected to account for the acceleration due to the self-induced electric fields. The restart from a state file without previously enabled ambipolar diffusion is currently not supported. However, the simulation can be continued if a macroscopic output ist available with the macroscopic restart. In that case, the electrons are not inserted but paired with an ion and given the sampled velocity from the macroscopic restart file.
 
+(sec:DSMC-quality)=
 ### Ensuring Physical Simulation Results
 
 To determine whether the DSMC related parameters are chosen correctly, so-called quality factors can be written out as part of the regular DSMC state file output by

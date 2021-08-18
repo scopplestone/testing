@@ -27,12 +27,12 @@
 This user guide is organized to both guide the first steps as well as provide a complete overview of 
 the simulation code's features from a user and a developer point of view.
 
-* Section {ref}`010_installation:Installation` contains step by step instructions from obtaining the source 
+* Chapter {ref}`010_installation:Installation` contains step by step instructions from obtaining the source 
   code up to running a first simulation and visualizing the simulation results. In addition, it 
   provides an overview of the whole simulation framework and the currently implemented features.
-* Section {ref}`020_workflow:Workflow` outlines the workflow starting with mesh generation and concluding with the visualization of results produced with **PICLas**.
-* Section {ref}`features-and-models/index:Features & Models` shall serve as a reference for the models and features implemented in **PICLas**.
-* Section {ref}`040_visu_output:Visualization & Output` presents the options and parameters for the output of particle data, field and flow variables.
-* Section {ref}`050_tools:Tools Overview` lists tools within the **PICLas** repository, including the post-processing tools.
-* Simulation tutorials are contained in Section {ref}`tutorials/index:Tutorials`.
-* Cluster-specific user guidelines are given in Section {ref}`080_cluster_guide:Cluster Guidelines`.
+* Chapter {ref}`020_workflow:Workflow` outlines the workflow starting with mesh generation and concluding with the visualization of results produced with **PICLas**.
+* Chapter {ref}`features-and-models/index:Features & Models` shall serve as a reference for the models and features implemented in **PICLas**.
+* Chapter {ref}`040_visu_output:Visualization & Output` presents the options and parameters for the output of particle data, field and flow variables.
+* Chapter {ref}`050_tools:Tools Overview` lists tools within the **PICLas** repository, including the post-processing tools.
+* Simulation tutorials are contained in Chapter {ref}`tutorials/index:Tutorials`.
+* Cluster-specific user guidelines are given in Chapter {ref}`080_cluster_guide:Cluster Guidelines`.

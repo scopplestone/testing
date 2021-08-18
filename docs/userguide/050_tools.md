@@ -152,10 +152,12 @@ Set the environment variables (in /etc/profile or .bashrc or .zshrc ...):
 
 For older Ubuntu versions (14.04), the OpenMPI version from the package manager can be used (version 1.6.x) but this is **NOT
 ENCOURAGED**. For Ubuntu 16.04, OpenMPI 1.10.x is supplied, which should be compiled, otherwise the plugin might not work later on.
+
+(sec:hdf5-installation)=
 #### HDF5 installation
 HDF5 compilation (Versions 1.8.13, 1.8.14, 1.8.16, 1.10.0-patch1 tested):
 
-###### either via '''cmake''' (**ENCOURAGED**)
+##### either via '''cmake''' (**ENCOURAGED**)
 ```
  cmake -DBUILD_TESTING=OFF -DHDF5_BUILD_FORTRAN=ON -DHDF5_BUILD_CPP_LIB=OFF -DHDF5_BUILD_EXAMPLES=OFF -DHDF5_ENABLE_PARALLEL=ON -DHDF5_BUILD_HL_LIB=ON -DHDF5_BUILD_TOOLS=ON -DHDF5_ENABLE_F2003=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/hdf5/1.X.X ..
  make && make install
@@ -171,7 +173,7 @@ Attention: At least for HDF5 1.8.16 the correct path does not include /hdf5:
 ```
 **ATTENTION: reload .bashrc or .zshrc!!!**
 
-###### or via configure (**NOT ENCOURAGED**)
+##### or via configure (**NOT ENCOURAGED**)
 ```
  ./configure --prefix=/opt/hdf5/1.X.X --with-pic --enable-fortran --enable-fortran2003 --disable-shared --enable-parallel
  make && make install
@@ -323,49 +325,6 @@ where nidXXXXXX is the name of the pvserver and YYYYYY the port of the server, b
 
 If you work with the `PV_PLUGIN_PATH` environment variable: Reset it with `export PV_PLUGIN_PATH=''` before starting the script to avoid errors.
 
-<!-- ## Swap meshes
-
----------------------------------------------------------------------------------------------
-**posti_swapmesh**
---------------------------------- ------------------------------------------------------------
-Brief description                  Interpolates state file data from one mesh to another. Uses high-order interpolation and a Newton coordinate search algorithm. Meshes do not have to be conforming. A reference state can be given for areas in the target mesh not covered by the source mesh.
-
-Basic usage                        `posti_swapmesh [parameter.ini] [statefile.h5]`
-
-Further info / usage example       No tutorials so far
---------------------------------------------------------------------------------------------- -->
-
-<!-- ## Record points
-
-----------------------------------------------------------------------------------------------
-**posti_preparerecordpoints**
---------------------------------- ------------------------------------------------------------
-Brief description                  Enables **PICLas** to record values at a set of physical points over time with a higher temporal sampling rate than the state file output interval. The record point coordinates and the **PICLas** mesh are defined in the parameter file. Creates an additional `.h5` file, whose path is passed to **PICLas** as a parameter.
-
-Basic usage                        `posti_preparerecordpoints [parameter_prepareRP.ini]`
-
-Further info / usage example       \ref{sec:postiRecordpoints}
-----------------------------------------------------------------------------------------------
-
-----------------------------------------------------------------------------------------------
-**posti_visualizerecordpoints**
---------------------------------- ------------------------------------------------------------
-Brief description                  Performs post-processing of the `*_RP_*` files written by **PICLas**: merges several time steps and writes output such as value over time or spectra.
-
-Basic usage                        `posti_visualizerecordpoints [parameter_visuRP.ini] [projectname_RP_*.h5]`
-
-Further info / usage example       \ref{sec:postiRecordpoints}
-----------------------------------------------------------------------------------------------
-
-----------------------------------------------------------------------------------------------
-**posti_evaluaterecordpoints**
---------------------------------- ------------------------------------------------------------
-Brief description                  Evaluate the values at recorpoints a posteri from existing statefiles. Can be used if the recordpoints have not been set during the simulation, but will only give coarse temporal resolution.
-
-Basic usage                        `posti_evaluaterecordpoints [parameter.ini] [statefile.h5]`
-
-Further info / usage example       No tutorials so far
------------------------------------------------------------------------------------------------ -->
 
 ## Initialization of An Initial Particle Distribution Function (NEEDS UPDATING)
 

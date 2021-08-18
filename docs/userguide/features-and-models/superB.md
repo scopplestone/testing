@@ -1,4 +1,5 @@
-## Magnetic Background Field (superB)
+(sec:superB)=
+# Magnetic Background Field (superB)
 
 Certain application cases allow the utilization of a constant magnetic background field. The magnetic field resulting from certain types of coils and permanent magnets can be calculated during the initialization within PICLas or with the standalone tool **superB** (see Section \ref{sec:compileroptions} for compilation), which can be used to solely create a .h5 file that contains the B-field data via
 
@@ -23,7 +24,7 @@ For this purpose, different coil and permanent magnet geometries can be defined.
 
 In the following the parameters for different coils and permanent magnets based on the implementation by Hinsberger {cite}`Hinsberger2017` are presented.
 
-### Magnetic Field by Permanent Magnets
+## Magnetic Field by Permanent Magnets
 
 First, the total number of permanent magnets has to be defined and the type selected. Options are `cuboid`, `sphere`, `cylinder` and `conic`.
 
@@ -53,7 +54,7 @@ The geometries require different input parameters given below
     ! 'Radius2' and outer radius "Radius1'
     PermanentMagnet1-Radius2 = 1.
 
-### Magnetic Field by Coils
+## Magnetic Field by Coils
 
 The total number of coils and the respective type of the cross-section (`linear`,`circle`,`rectangle`,`custom`) is defined by
 

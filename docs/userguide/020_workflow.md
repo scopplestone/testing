@@ -14,7 +14,7 @@ The basic command for either mesh generation or conversion of an external mesh i
 hopr hopr.ini
 ~~~~~~~
 
-Note that the path to the **HOPR** executable is omitted in the command (visit \ref{sec:installation_directory}).
+Note that the path to the **HOPR** executable is omitted in the command (visit {ref}`sec:directory-paths`).
 
 ### Mesh generation with HEXPRESS
 
@@ -48,9 +48,13 @@ HOPR: CGNS 3.3.1
 
 ### Mesh generation with GridPro
 
-[GridPro](https://www.gridpro.com/) is a proprietary conforming multi-block mesh generator with hexahedral elements. However, a free academic version limited to 250 blocks is available.
+[GridPro](https://www.gridpro.com/) is a proprietary conforming multi-block mesh generator with hexahedral elements. However,
+a free academic version limited to 250 blocks is available.
 
-After mesh generation, and before naming the boundaries in the *Property Setter*, you should set the output format to STARCD. Make sure to define not only labels but also different properties for the boundaries. Then export as STARCD and you will get four output files. During the export GridPro loses the label information, thus the boundary names have to be set again in the *.inp file. An example of a correct *.inp is given below:
+After mesh generation, and before naming the boundaries in the *Property Setter*, you should set the output format to STARCD.
+Make sure to define not only labels but also different properties for the boundaries. Then export as STARCD and you will get
+four output files. During the export GridPro loses the label information, thus the boundary names have to be set again in the
+*.inp file. An example of a correct *.inp is given below:
 
     TITLE
     Converted from GridPro v4.1
@@ -68,14 +72,18 @@ HOPR can then read-in the mesh with following mode option:
 
     Mode = 4
 
-More recent versions of GridPro also support a CGNS output. Here, the option *Export* -> *Grid* -> *CGNS* -> *Elementary* should be chosen. For different boundary labels, different property types have to be defined (Note: The property type *Wall* might be causing problems during the HOPR read-in and should be avoided). The following errors can be ignored as long as HOPR finishes successfully and a mesh file is written out
+More recent versions of GridPro also support a CGNS output. Here, the option *Export* -> *Grid* -> *CGNS* -> *Elementary* should
+be chosen. For different boundary labels, different property types have to be defined (Note: The property type *Wall* might be
+causing problems during the HOPR read-in and should be avoided). The following errors can be ignored as long as HOPR finishes
+successfully and a mesh file is written out
 
     ERROR: number of zones in inifile does not correspond to number of zones in meshfile(s)
     ERROR - Could not find corresponding boundary definition of ws.Interblck
 
 ### Mesh generation with CENTAUR
 
-A conventional tetrahedral mesh can be generated with CENTAUR. Boundaries have to be set in CENTAUR and accordingly in the HOPR parameter file. During the export as CGNS the following options are required:
+A conventional tetrahedral mesh can be generated with CENTAUR. Boundaries have to be set in CENTAUR and accordingly in the HOPR
+parameter file. During the export as CGNS the following options are required:
 
 * Check "Only write out boundary faces"
 * Check "Write out boundary faces grouped by panels"
@@ -86,13 +94,16 @@ Read-in and convert with HOPR and the following options:
     BugFix_ANSA_CGNS = TRUE
     SplitToHex = TRUE
 
-Should problems occur try to set SpaceQuandt to a higher value, e.g. 100. During the pre-processing step every tetrahedron will be converted to 4 hexahedrons, resulting in increased number of elements.
+Should problems occur try to set SpaceQuandt to a higher value, e.g. 100. During the pre-processing step every tetrahedron will be
+converted to 4 hexahedrons, resulting in increased number of elements.
 
 ### Mesh generation with MeshGems/SALOME
 
 *Note: This tutorial was last updated/used: June 2016*
 
-[MeshGems-Hexa](http://www.meshgems.com/volume-meshing-meshgems-hexa.html) is proprietary automated all-hex mesh generator. The algorithm can be used a plug-in within the open-source platform [SALOME](https://www.salome-platform.org/). At the time, we do not have a MeshGems-Hexa license and cannot give any support on mesh generation.
+[MeshGems-Hexa](http://www.meshgems.com/volume-meshing-meshgems-hexa.html) is proprietary automated all-hex mesh generator.
+The algorithm can be used a plug-in within the open-source platform [SALOME](https://www.salome-platform.org/). At the time, we do
+not have a MeshGems-Hexa license and cannot give any support on mesh generation.
 
 * Import geometry as STEP or IGS
 * Create groups in Geometry module for the boundary conditions
@@ -143,21 +154,27 @@ The first set of options describe general CMake behaviour:
 
 * ``CMAKE_HOSTNAME``: This will display the host name of the machine you are compiling on.
 
-* ``CMAKE_INSTALL_PREFIX``: If “make install” is invoked or INSTALL is built, this directory is prepended onto all install directories. This variable defaults to /usr/local on UNIX.
+* ``CMAKE_INSTALL_PREFIX``: If “make install” is invoked or INSTALL is built, this directory is prepended onto all install directories
+This variable defaults to /usr/local on UNIX.
 
 For some external libraries and programs that **PICLas** uses, the following options apply:
 
 * ``CTAGS_PATH``: This variable specifies the Ctags install directory, an optional program used to jump between tags in the source file.
 
-* ``LIBS_BUILD_HDF5``: This will be set to ON if no prebuilt HDF5 installation was found on your machine. In this case a HDF5 version will be build and used instead. For a detailed description of the installation of HDF5, please refer to Section \ref{sec:install_hdf5}.
+* ``LIBS_BUILD_HDF5``: This will be set to ON if no pre-built HDF5 installation was found on your machine. In this case a HDF5 version
+will be build and used instead. For a detailed description of the installation of HDF5, please refer to Section {ref}`sec:hdf5-installation`.
 
-* ``HDF5_DIR``: If you want to use a prebuilt HDF5 library that has been build using the CMake system, this directory should contain the CMake configuration file for HDF5 (optional).
+* ``HDF5_DIR``: If you want to use a pre-built HDF5 library that has been build using the CMake system, this directory should contain
+the CMake configuration file for HDF5 (optional).
 
 * ``PICLAS_BUILD_POSTI``: Enables the compilation of additional tools and activates the following options:
-  * ``POSTI_BUILD_SUPERB``: Enables the compilation of **superB**, which is allows the computation of magnetic fields based on an input of coils and permanent magnets (Section \ref{sec:superB})
-  * ``POSTI_BUILD_VISU``: Enables the compilation of the post-processing tool **piclas2vtk**, which enables the conversion of output files into the VTK format (Chapter \ref{chap:visu_output})
+  * ``POSTI_BUILD_SUPERB``: Enables the compilation of **superB**, which is allows the computation of magnetic fields based on an
+  input of coils and permanent magnets, see Section {ref}`sec:superB`
+  * ``POSTI_BUILD_VISU``: Enables the compilation of the post-processing tool **piclas2vtk**, which enables the conversion of
+  output files into the VTK format
   * ``POSTI_USE_PARAVIEW``: Enables the compilation of the ParaView plugin, which enables the direct read-in of output files within ParaView
 
+(sec:solver-settings)=
 ## Solver settings
 
 Before setting up a simulation, the code must be compiled with the desired parameters. The most important compiler options to be set are:
@@ -168,26 +185,33 @@ Before setting up a simulation, the code must be compiled with the desired param
 * ``PICLAS_EQNSYSNAME``: Equation system to be solved
     * maxwell:
     * poisson:
-* ``PICLAS_POLYNOMIAL_DEGREE``: Defines the polynomial degree of the solution. The order of convergence follows as $N+1$. Each grid cell contains $(N+1)^3$ collocation points to represent the solution.
+* ``PICLAS_POLYNOMIAL_DEGREE``: Defines the polynomial degree of the solution. The order of convergence follows as $N+1$. Each grid
+cell contains $(N+1)^3$ collocation points to represent the solution.
 * ``PICLAS_NODETYPE``: The nodal collocation points used during the simulation
     * GAUSS:
     * GAUSS-LOBATTO:
 * ``PICLAS_INTKIND8``: Enables simulations with particle numbers above 2 147 483 647
-* ``PICLAS_READIN_CONSTANTS``: Enables user-defined natural constants for the speed of light *c0*, permittivity *eps* and permeability *mu* of vacuum,
+* ``PICLAS_READIN_CONSTANTS``: Enables user-defined natural constants for the speed of light *c0*, permittivity *eps* and
+    permeability *mu* of vacuum,
     which must then be supplied in the parameter file. The default if *OFF* and the values for the speed of light c0=299792458.0 [m/s], permittivity
     eps=8.8541878176e-12 [F/m] and permeability mu=1.2566370614e-6 [H/m] are hard-coded.
 
-The options EQNSYSNAME, POLYNOMIAL_DEGREE and NODETYPE can be ignored for a DSMC simulation. For parallel computation the following flags should be configured:
+The options EQNSYSNAME, POLYNOMIAL_DEGREE and NODETYPE can be ignored for a DSMC simulation. For parallel computation the following
+flags should be configured:
 
-* ``LIBS_USE_MPI``: Enabling parallel computation. For a detailed description of the installation of MPI, please refer to refer to Section \ref{sec:install_mpi}.
-* ``PICLAS_LOADBALANCE``: Enable load-balancing
+* ``LIBS_USE_MPI``: Enabling parallel computation. For a detailed description of the installation of MPI, please refer to refer to
+                    Section {ref}`sec:installing-mpi`.
+* ``PICLAS_LOADBALANCE``: Enable timer-based load-balancing by automatic determination of workload weights for each simulation
+                          element.
 
 All other options are set in the parameter file.
 
 ## Setup of parameter file(s)
 
-The settings of the simulation are controlled through parameter files, which are given as arguments to the binary. In the case of PIC simulations the input of a single
-parameter file (e.g. *parameter.ini*) is sufficient, while the DSMC method requires the input of a species parameter file (e.g. *DSMCSpecies.ini*). The most recent list of parameters can be found by invoking the help in the console:
+The settings of the simulation are controlled through parameter files, which are given as arguments to the binary. In the case of
+PIC simulations the input of a single
+parameter file (e.g. *parameter.ini*) is sufficient, while the DSMC method requires the input of a species parameter file (e.g.
+*DSMCSpecies.ini*). The most recent list of parameters can be found by invoking the help in the console:
 
     piclas --help
 
@@ -220,9 +244,13 @@ The concept of the parameter file is described as followed:
 ~~~~~~~
     vector = (/1,2Pi,3Pi/)
 ~~~~~~~
-* The order of defined variables is with one exception irrelevant, except for the special case when redefining boundaries. However, it is preferable to group similar variables together.
+* The order of defined variables is with one exception irrelevant, except for the special case when redefining boundaries.
+However, it is preferable to group similar variables together.
 
-The options and underlying models are discussed in Chapter \ref{chap:features_models}, while the available output options are given in Chapter \ref{chap:visu_output}. Due to the sheer number of parameters available, it is advisable to build upon an existing parameter file from one of the tutorials in Chapter \ref{chap:tutorials}.
+The options and underlying models are discussed in Chapter {ref}`features-and-models/index:Features & Models`, while the available 
+output options are given in Chapter {ref}`040_visu_output:Visualization & Output`.
+Due to the sheer number of parameters available, it is advisable to build upon an existing parameter file from one of the tutorials
+in Chapter {ref}`tutorials/index:Tutorials`.
 
 ## Simulation
 
@@ -234,9 +262,11 @@ The simulation may be restarted from an existing state file
 
     piclas parameter.ini [DSMCSpecies.ini] [restart_file.h5]
 
-A state file is generated at the end of the simulation and also at every time step defined by `Analyze_dt`. **Note:** When restarting from an earlier time (or zero), all later state files possibly contained in your directory are deleted!
+A state file is generated at the end of the simulation and also at every time step defined by `Analyze_dt`. **Note:** When
+restarting from an earlier time (or zero), all later state files possibly contained in your directory are deleted!
 
-After a successful simulation, state files will be written out in the HDF5 format preceded by the project name, file type (e.g. State, DSMCState, DSMCSurfState) and the time stamp:
+After a successful simulation, state files will be written out in the HDF5 format preceded by the project name, file type (e.g.
+State, DSMCState, DSMCSurfState) and the time stamp:
 
     TestCase_State_001.5000000000000000.h5
     TestCase_DSMCState_001.5000000000000000.h5
@@ -248,18 +278,24 @@ The format and floating point length of the time stamp *001.5000000000000000* ca
 where the floating format with length of *F21.14* is used as default value.
 
 ### Parallel execution
-The simulation code is specifically designed for (massively) parallel execution using the MPI library. For parallel runs, the code must be compiled with `PICLAS_MPI=ON`. Parallel execution is then controlled using `mpirun`
+The simulation code is specifically designed for (massively) parallel execution using the MPI library. For parallel runs, the code
+must be compiled with `PICLAS_MPI=ON`. Parallel execution is then controlled using `mpirun`
 
     mpirun -np [no. processors] piclas parameter.ini [DSMCSpecies.ini] [restart_file.h5]
 
-The grid elements are organized along a space-filling curved, which gives a unique one-dimensional element list. In a parallel run, the mesh is simply divided into parts along the space filling curve. Thus, domain decomposition is done *fully automatic* and is not limited by e.g. an integer factor between the number of cores and elements. The only limitation is that the number of cores may not exceed the number of elements.
+The grid elements are organized along a space-filling curved, which gives a unique one-dimensional element list. In a parallel run,
+the mesh is simply divided into parts along the space filling curve. Thus, domain decomposition is done *fully automatic* and is
+not limited by e.g. an integer factor between the number of cores and elements. The only limitation is that the number of cores
+may not exceed the number of elements.
 
 ## Post-processing
 
-**PICLas** comes with a tool for visualization. The piclas2vtk tool converts the HDF5 files generated by **PICLas** to the binary VTK format, readable by many visualization tools like ParaView and VisIt. The tool is executed by
+**PICLas** comes with a tool for visualization. The piclas2vtk tool converts the HDF5 files generated by **PICLas** to the binary
+VTK format, readable by many visualization tools like ParaView and VisIt. The tool is executed by
 
 ~~~~~~~
 piclas2vtk [posti.ini] output.h5
 ~~~~~~~
 
-Multiple HDF5 files can be passed to the piclas2vtk tool at once. The (optional) runtime parameters to be set in `posti.ini` are given in Chapter \ref{chap:visu_output}.
+Multiple HDF5 files can be passed to the piclas2vtk tool at once. The (optional) runtime parameters to be set in `posti.ini` are
+given in Chapter {ref}`040_visu_output:Visualization & Output`.

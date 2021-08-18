@@ -93,24 +93,40 @@ In case of a PIC simulation, the particle-grid deposited properties (via the use
 
 which must be supplied for each particle species `x` separately.
 
-## Flow Field and Surface Variables
+(sec:sampled-flow-field-and-surface-variables)=
+## Sampled Flow Field and Surface Variables
 
-Flow field and surface outputs are available when the DSMC, BGK and FP methods are utilized (standalone or coupled with PIC) and stored in `*_DSMCState_*.h5`. A sampling over a certain number of iterations is performed to calculate the average macroscopic values such as number density, bulk velocity and temperature from the microscopic particle information. Two variants are available in PICLas, allowing to sample a certain amount of the simulation duration or to sample continuously during the simulation and output the result after the given number of iterations.
+Flow field and surface outputs are available when the DSMC, BGK and FP methods are utilized (standalone or coupled with PIC) and
+stored in `*_DSMCState_*.h5`. A sampling over a certain number of iterations is performed to calculate the average macroscopic
+values such as number density, bulk velocity and temperature from the microscopic particle information. Two variants are available
+in PICLas, allowing to sample a certain amount of the simulation duration or to sample continuously during the simulation and
+output the result after the given number of iterations.
 
-The first variant is usually utilized to sample at the end of a simulation, when the steady state condition is reached. The first parameter `Part-TimeFracForSampling` defines the percentage that shall be sampled relative to the simulation end time $T_\mathrm{end}$ (Parameter: `TEnd`)
+The first variant is usually utilized to sample at the end of a simulation, when the steady state condition is reached. The first
+parameter `Part-TimeFracForSampling` defines the percentage that shall be sampled relative to the simulation end time $T_\mathrm{end}$
+(Parameter: `TEnd`)
 
     Part-TimeFracForSampling = 0.1
     Particles-NumberForDSMCOutputs = 2
 
-`Particles-NumberForDSMCOutputs` defines the number of outputs during the sampling time. Example: The simulation end time is $T_\mathrm{end}=1$, thus sampling will begin at $T=0.9$ and the first output will be written at $T=0.95$. At this point the sample will NOT be resetted but continued. Therefore, the second and last output at $T=T_\mathrm{end}=1.0$ is not independent of the previous result but contains the sample of the complete sampling duration. It should be noted that if a simulation is continued at e.g. $T=0.95$, sampling with the given parameters will begin immediately.
+`Particles-NumberForDSMCOutputs` defines the number of outputs during the sampling time. Example: The simulation end time is
+$T_\mathrm{end}=1$, thus sampling will begin at $T=0.9$ and the first output will be written at $T=0.95$. At this point the sample
+will NOT be resetted but continued. Therefore, the second and last output at $T=T_\mathrm{end}=1.0$ is not independent of the
+previous result but contains the sample of the complete sampling duration. It should be noted that if a simulation is continued
+at e.g. $T=0.95$, sampling with the given parameters will begin immediately.
 
-The second variant can be used to produce outputs for unsteady simulations, while still to be able to sample for a number of iterations (Parameter: `Part-IterationForMacroVal`). The first two flags allow to enable the output of flow field/volume and surface values, respectively.
+The second variant can be used to produce outputs for unsteady simulations, while still to be able to sample for a number of
+iterations (Parameter: `Part-IterationForMacroVal`). The first two flags allow to enable the output of flow field/volume and
+surface values, respectively.
 
     Part-WriteMacroVolumeValues = T
     Part-WriteMacroSurfaceValues = T
     Part-IterationForMacroVal = 100
 
-Example: The simulation end time is $T_\mathrm{end}=1$ with a time step of $\Delta t = 0.001$. With the parameters given above, we would sample for 100 iterations up to $T = 0.1$ and get the first output. Afterwards, the sample is deleted and the sampling begins anew for the following output at $T=0.2$. This procedure is repeated until the simulation end, resulting in 10 outputs with independent samples.
+Example: The simulation end time is $T_\mathrm{end}=1$ with a time step of $\Delta t = 0.001$. With the parameters given above,
+we would sample for 100 iterations up to $T = 0.1$ and get the first output. Afterwards, the sample is deleted and the sampling
+begins anew for the following output at $T=0.2$. This procedure is repeated until the simulation end, resulting in 10 outputs with
+independent samples.
 
 Parameters indicating the quality of the simulation (e.g. the maximal collision probability in case of DSMC) can be enabled by
 
@@ -120,18 +136,26 @@ Output and sampling on surfaces can be enabled by
 
     Particles-DSMC-CalcSurfaceVal = T
 
-By default this will include the species-specific impact counter per iteration of simulation particles, the force per area in $x$, $y$, and $z$ and the heat flux. The output of the surface-sampled data is written to `*_DSMCSurfState_*.h5`. Additional surface values can be sampled by using
+By default this will include the species-specific impact counter per iteration of simulation particles, the force per area in $x$,
+$y$, and $z$ and the heat flux. The output of the surface-sampled data is written to `*_DSMCSurfState_*.h5`. Additional surface
+values can be sampled by using
 
     CalcSurfaceImpact = T
 
-which calculates the species-dependent averaged impact energy (trans, rot, vib, elec), impact vector, impact obliqueness angle (between particle trajectory and surface normal vector, e.g. an impact vector perpendicular to the surface corresponds to an impact angle of $0^{\circ}$), number of real particle impacts over the sampling duration and number of real particle impacts per area per second.
+which calculates the species-dependent averaged impact energy (trans, rot, vib, elec), impact vector, impact obliqueness angle
+(between particle trajectory and surface normal vector, e.g. an impact vector perpendicular to the surface corresponds to an
+impact angle of $0^{\circ}$), number of real particle impacts over the sampling duration and number of real particle impacts
+per area per second.
 
 ## Integral Variables
 
 WIP, PartAnalyze/FieldAnalyze
 
 ## Element-constant properties
-The determined properties are given by a single value within each cell and are NOT sampled over time as opposed to the output described in Section \ref{sec:visu_flowfield}. These parameters are only available for PIC simulations, are part of the regular state file (as a separate container within the HDF5 file) and automatically included in the conversion to the VTK format.
+The determined properties are given by a single value within each cell and are NOT sampled over time as opposed to the output
+described in Section {ref}`sec:sampled-flow-field-and-surface-variables`.
+These parameters are only available for PIC simulations, are part of the regular state file (as a separate container within the
+HDF5 file) and automatically included in the conversion to the VTK format.
 
 **Power Coupled to Particles**
 The energy transferred to particles during the push (acceleration due to electromagnetic fields) is
@@ -140,7 +164,8 @@ determined by using
     CalcCoupledPower = T
 
 which calculates the time-averaged power (moving average) coupled to the particles in each cell (average power per cubic metre)
-and stores it in `PCouplDensityAvgElem` for each species separately. Additionally, the properties `PCoupl` (instantaneous) and a time-averaged (moving average) value
+and stores it in `PCouplDensityAvgElem` for each species separately. Additionally, the properties `PCoupl` (instantaneous) and a
+time-averaged (moving average) value
 `PCoupledMoAv` are stored in the `ParticleAnalyze.csv` output file. 
 
 **Plasma Frequency**

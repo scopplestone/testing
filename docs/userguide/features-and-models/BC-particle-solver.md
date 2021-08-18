@@ -9,7 +9,8 @@ Within the parameter file it is possible to define different particle boundary c
     Part-Boundary2-Condition=reflective
     Part-Boundary2-SurfaceModel=2
 
-The `Part-Boundary1-SourceName=` corresponds to the name given during the preprocessing step with HOPR. The available conditions (`Part-Boundary1-Condition=`) are described in the table below.
+The `Part-Boundary1-SourceName=` corresponds to the name given during the preprocessing step with HOPR. The available conditions
+(`Part-Boundary1-Condition=`) are described in the table below.
 
 |   Condition    | Description                                                                                                                                                                                 |
 | :------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -19,17 +20,23 @@ The `Part-Boundary1-SourceName=` corresponds to the name given during the prepro
 | `rot_periodic` | Allows the definition of rotational periodicity.                                                                                                                                            |
 
 For `reflective` boundaries, an additional option `Part-Boundary2-SurfaceModel` is available, that
-is used for heterogeneous reactions (reactions have reactants in two or more phases) or secondary electron emission models. These models are described in \ref{sec:chem_reac}.
+is used for heterogeneous reactions (reactions that have reactants in two or more phases) or secondary electron emission models.
+These models are described in {ref}`sec:surface-chemistry`.
 
-For `rot_periodic` exactly two corresponding boundaries must be defined. Every particle crossing one of these boundaries will be inserted at the corresponding other boundary that is rotationally shifted.
+For `rot_periodic` exactly two corresponding boundaries must be defined. Every particle crossing one of these boundaries will be
+inserted at the corresponding other boundary that is rotationally shifted.
 
 ## Diffuse Wall
 
-Gas-surface interaction can be modelled with the extended Maxwellian model {cite}`Padilla2009`, using accommodation coefficients of the form
+Gas-surface interaction can be modelled with the extended Maxwellian model {cite}`Padilla2009`, using accommodation coefficients
+of the form
 
 $$\alpha = \frac{E_i-E_r}{E_i - E_w}$$
 
-where $i$, $r$ and $w$ denote the incident, reflected and wall energy, respectively.  The coefficient `MomentumACC` is utilized to decide whether a diffuse (`MomentumACC` $>R$) or specular reflection (`MomentumACC` $<R$) occurs upon particle impact, where $R=[0,1)$ is a random number. Separate accommodation coefficients can be defined for the translation (`TransACC`), rotational (`RotACC`), vibrational (`VibACC`) and electronic energy (`ElecACC`) accommodation at a constant wall temperature [K].
+where $i$, $r$ and $w$ denote the incident, reflected and wall energy, respectively.  The coefficient `MomentumACC` is utilized to
+decide whether a diffuse (`MomentumACC` $>R$) or specular reflection (`MomentumACC` $<R$) occurs upon particle impact, where
+$R=[0,1)$ is a random number. Separate accommodation coefficients can be defined for the translation (`TransACC`), rotational
+(`RotACC`), vibrational (`VibACC`) and electronic energy (`ElecACC`) accommodation at a constant wall temperature [K].
 
     Part-Boundary2-SourceName=BC_WALL
     Part-Boundary2-Condition=reflective
@@ -46,7 +53,9 @@ Additionally, a linear wall velocity [m/s] can be given
 
     Part-Boundary2-WallVelo=(/0,0,100/)
 
-In the case of rotating walls the `-RotVelo` flag, a rotation frequency [Hz], a origin of rotation axis (x, y, z coordinates) and the rotation axis vector must be set. Note that the definition of rotation direction is given by the rotation axis and the right-hand rule.
+In the case of rotating walls the `-RotVelo` flag, a rotation frequency [Hz], a origin of rotation axis (x, y, z coordinates) and
+the rotation axis vector must be set. Note that the definition of rotation direction is given by the rotation axis and the
+right-hand rule.
 
     Part-Boundary2-RotVelo = T
     Part-Boundary2-RotFreq = 100
@@ -61,25 +70,38 @@ A linear temperature gradient across a boundary can be defined by supplying a se
     Part-Boundary2-TemperatureGradientStart=(/0.,0.,0./)
     Part-Boundary2-TemperatureGradientEnd=(/0.,0.,1./)
 
-Between these two points the temperature will be interpolated, where the start vector corresponds to the first wall temperature, whereas the end vector to the second wall temperature. Beyond these position values, the first and second temperature will be used as the constant wall temperature, respectively.
+Between these two points the temperature will be interpolated, where the start vector corresponds to the first wall temperature,
+whereas the end vector to the second wall temperature. Beyond these position values, the first and second temperature will be used
+as the constant wall temperature, respectively.
 
 ### Radiative equilibrium
 
-Another option is to adapt the wall temperature based on the heat flux assuming that the wall is in radiative equilibrium. The temperature is then calculated from
+Another option is to adapt the wall temperature based on the heat flux assuming that the wall is in radiative equilibrium.
+The temperature is then calculated from
 
 $$ q_w = \varepsilon \sigma T_w^4,$$
 
-where $\varepsilon$ is the radiative emissivity of the wall (default = 1) and $\sigma = \SI{5.67E-8}{\watt\per\square\meter\per\kelvin\tothe{4}}$ is the Stefan-Boltzmann constant. The adaptive boundary is enabled by
+where $\varepsilon$ is the radiative emissivity of the wall (default = 1) and
+$\sigma = \SI{5.67E-8}{\watt\per\square\meter\per\kelvin\tothe{4}}$ is the Stefan-Boltzmann constant. The adaptive boundary is
+enabled by
 
     Part-AdaptWallTemp = T
     Part-Boundary1-UseAdaptedWallTemp = T
     Part-Boundary1-RadiativeEmissivity = 0.8
 
-If provided, the wall temperature will be adapted during the next output of macroscopic variables, where the heat flux calculated during the preceding sampling period is utilized to determine the side-local temperature. The temperature is included in the `State` file and thus available during a restart of the simulation. The surface output (in `DSMCSurfState`) will additionally include the temperature distribution in the `Wall_Temperature` variable (see Section \ref{sec:visu_flowfield}). To continue the simulation without further adapting the temperature, the first flag has to be disabled (`Part-AdaptWallTemp = F`). It should be noted that the the adaptation should be performed multiple times to achieve a converged temperature distribution.
+If provided, the wall temperature will be adapted during the next output of macroscopic variables, where the heat flux calculated
+during the preceding sampling period is utilized to determine the side-local temperature. The temperature is included in the
+`State` file and thus available during a restart of the simulation. The surface output (in `DSMCSurfState`) will additionally
+include the temperature distribution in the `Wall_Temperature` variable (see Section {ref}`sec:sampled-flow-field-and-surface-variables`).
+To continue the simulation without further adapting the temperature, the first flag has to be disabled (`Part-AdaptWallTemp = F`).
+It should be noted that the the adaptation should be performed multiple times to achieve a converged temperature distribution.
 
 ## Rotational Periodicity
 
-The rotational periodic boundary condition can be used in order to reduce the computational effort in case of an existing rotational periodicity. In contrast to symmetric boundary conditions, a macroscopic flow velocity in azimuthal direction can be simulated (e.g. circular flow around a rotating cylinder). Exactly two corresponding boundaries must be defined by setting `rot_periodic` as BC condition and the rotation direction for each BCs.
+The rotational periodic boundary condition can be used in order to reduce the computational effort in case of an existing
+rotational periodicity. In contrast to symmetric boundary conditions, a macroscopic flow velocity in azimuthal direction can be
+simulated (e.g. circular flow around a rotating cylinder). Exactly two corresponding boundaries must be defined by setting
+`rot_periodic` as BC condition and the rotation direction for each BCs.
 
     Part-Boundary1-SourceName=BC_Rot_Peri_plus
     Part-Boundary1-Condition=rot_periodic
@@ -89,17 +111,23 @@ The rotational periodic boundary condition can be used in order to reduce the co
     Part-Boundary2-Condition=rot_periodic
     Part-Boundary2-RotPeriodicDir=-1
 
-CAUTION! The correct sign for the direction must be determined. Here, the rotation direction is defined by the rotation axis `Part-RotPeriodicAxi` that must be defined separately, and the right-hand rule.
+CAUTION! The correct sign for the direction must be determined. Here, the rotation direction is defined by the rotation axis
+`Part-RotPeriodicAxi` that must be defined separately, and the right-hand rule.
 
     Part-RotPeriodicAxi=1    ! (x=1, y=2, z=3)
 
-The usage of rotational periodic boundary conditions is limited to cases, where the rotational periodic axis is one of the three Cartesian coordinate axis (x, y, z) with its origin at (0, 0, 0). Finally the rotation angle `Part-RotPeriodicAngle` [°] must be defined.
+The usage of rotational periodic boundary conditions is limited to cases, where the rotational periodic axis is one of the three
+Cartesian coordinate axis (x, y, z) with its origin at (0, 0, 0). Finally the rotation angle `Part-RotPeriodicAngle` [°] must be
+defined.
 
     Part-RotPeriodicAngle=90
 
 ## Porous Wall / Pump
 
-The porous boundary condition uses a removal probability to determine whether a particle is deleted or reflected at the boundary. The main application of the implemented condition is to model a pump, according to {cite}`Lei2017`. It is defined by giving the number of porous boundaries and the respective boundary number (`BC=2` corresponds to the `BC_WALL` boundary defined in the previous section) on which the porous condition is.
+The porous boundary condition uses a removal probability to determine whether a particle is deleted or reflected at the boundary.
+The main application of the implemented condition is to model a pump, according to {cite}`Lei2017`. It is defined by giving the
+number of porous boundaries and the respective boundary number (`BC=2` corresponds to the `BC_WALL` boundary defined in the
+previous section) on which the porous condition is.
 
     Surf-nPorousBC=1
     Surf-PorousBC1-BC=2
@@ -110,21 +138,31 @@ The porous boundary condition uses a removal probability to determine whether a 
     Surf-PorousBC1-DeltaPumpingSpeed-Kp=0.1
     Surf-PorousBC1-DeltaPumpingSpeed-Ki=0.0
 
-The removal probability is determined through the given pressure [Pa] and temperature [K] at the boundary. A pumping speed can be given as a first guess, however, the pumping speed $S$ [$m^3/s$] will be adapted if the proportional factor ($K_{\mathrm{p}}$, `DeltaPumpingSpeed-Kp`) is greater than zero
+The removal probability is determined through the given pressure [Pa] and temperature [K] at the boundary. A pumping speed can be
+given as a first guess, however, the pumping speed $S$ [$m^3/s$] will be adapted if the proportional factor ($K_{\mathrm{p}}$,
+`DeltaPumpingSpeed-Kp`) is greater than zero
 
 $$ S^{n+1}(t) = S^{n}(t) + K_{\mathrm{p}} \Delta p(t) + K_{\mathrm{i}} \int_0^t \Delta p(t') dt',$$
 
-where $\Delta p$ is the pressure difference between the given pressure and the actual pressure at the pump. An integral factor ($K_{\mathrm{i}}$, `DeltaPumpingSpeed-Ki`) can be utilized to mimic a PI controller. The proportional and integral factors are relative to the given pressure. However, the integral factor has not yet been thoroughly tested. The removal probability $\alpha$ is then calculated by
+where $\Delta p$ is the pressure difference between the given pressure and the actual pressure at the pump. An integral factor
+($K_{\mathrm{i}}$, `DeltaPumpingSpeed-Ki`) can be utilized to mimic a PI controller. The proportional and integral factors are
+relative to the given pressure. However, the integral factor has not yet been thoroughly tested. The removal probability $\alpha$
+is then calculated by
 
 $$\alpha = \frac{S n \Delta t}{N_{\mathrm{pump}} w} $$
 
-where $n$ is the sampled, cell-local number density and $N_{\mathrm{pump}}$ is the total number of impinged particle at the pump during the previous time step. $\Delta t$ is the time step and $w$ the weighting factor. The pumping speed $S$ is only adapted if the resulting removal probability $\alpha$ is between zero and unity. The removal probability is not species-specific.
+where $n$ is the sampled, cell-local number density and $N_{\mathrm{pump}}$ is the total number of impinged particle at the pump
+during the previous time step. $\Delta t$ is the time step and $w$ the weighting factor. The pumping speed $S$ is only adapted if
+the resulting removal probability $\alpha$ is between zero and unity. The removal probability is not species-specific.
 
-To reduce the influence of statistical fluctuations, the relevant macroscopic values (pressure difference $\Delta p$ and number density $n$) can be sampled for $N$ iterations by defining (for all porous boundaries)
+To reduce the influence of statistical fluctuations, the relevant macroscopic values (pressure difference $\Delta p$ and number
+density $n$) can be sampled for $N$ iterations by defining (for all porous boundaries)
 
     AdaptiveBC-SamplingIteration=10
 
-A porous region on the specified boundary can be defined. At the moment, only the `circular` option is implemented. The origin of the circle/ring on the surface and the radius have to be given. In the case of a ring, a maximal and minimal radius is required (`-rmax` and `-rmin`, respectively), whereas for a circle only the input of maximal radius is sufficient.
+A porous region on the specified boundary can be defined. At the moment, only the `circular` option is implemented. The origin of
+the circle/ring on the surface and the radius have to be given. In the case of a ring, a maximal and minimal radius is required
+(`-rmax` and `-rmin`, respectively), whereas for a circle only the input of maximal radius is sufficient.
 
     Surf-PorousBC1-Region=circular
     Surf-PorousBC1-normalDir=1
@@ -139,15 +177,18 @@ The absolute coordinates are defined as follows for the respective normal direct
 |      y (=2)      |    (z,x)    |
 |      z (=3)      |    (x,y)    |
 
-Using the regions, multiple pumps can be defined on a single boundary. Additionally, the BC can be used as a sensor by defining the respective type:
+Using the regions, multiple pumps can be defined on a single boundary. Additionally, the BC can be used as a sensor by defining
+the respective type:
 
     Surf-PorousBC1-BC=3
     Surf-PorousBC1-Pressure=5.
     Surf-PorousBC1-Temperature=300.
     Surf-PorousBC1-Type=sensor
 
-Together with a region definition, a pump as well as a sensor can be defined on a single and/or multiple boundaries, allowing e.g. to determine the pressure difference between the pump and a remote area of interest.
+Together with a region definition, a pump as well as a sensor can be defined on a single and/or multiple boundaries, allowing e.g.
+to determine the pressure difference between the pump and a remote area of interest.
 
+(sec:surface-chemistry)=
 ## Surface Chemistry
 
 Modelling of reactive surfaces is enabled by setting `Part-BoundaryX-Condition=reflective` and an

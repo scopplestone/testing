@@ -1,6 +1,7 @@
-## Particle-In-Cell
+# Particle-In-Cell
 
-### Charge and Current Deposition
+(sec:PIC-deposition)=
+## Charge and Current Deposition
 
 Charge and current deposition can be performed using different methods, among others, shape
 functions, B-splines or locally volume-weighted approaches.
@@ -12,7 +13,7 @@ functions, B-splines or locally volume-weighted approaches.
 |    *shape_function_cc*    |            charge corrected shape function with fixed radius           |
 | *shape_function_adaptive* |      charge corrected shape function with element-dependent radius     |
 
-#### Linear Distribution Over Cell Interfaces
+### Linear Distribution Over Cell Interfaces
 A linear deposition method that also considers neighbouring elements can be selected by
 
     PIC-Deposition-Type = cell_volweight_mean
@@ -20,7 +21,7 @@ A linear deposition method that also considers neighbouring elements can be sele
 The method also considers the corner nodes of each element to which all neighbouring elements
 contribute, hence, resulting in a non-local deposition scheme.
 
-#### Shape Function
+### Shape Function
 
 High-order field solvers require deposition methods that reduce the noise, e.g., shape functions {cite}`Jacobs2006`. The standard 3D shape function is selected by
 
@@ -63,7 +64,7 @@ The default values (maximum allowed for each polynomial degree $N$) depend on th
 The following polynomial isotropic shape functions are all designed to be used in three dimensions, where reductions to 2D and 1D
 are possible.
 
-##### Shape Function 1D
+#### Shape Function 1D
 A one-dimensional shape function in $x$-direction is given by
 
 $$
@@ -94,7 +95,7 @@ and the dimensionality of the shape function is controlled by
 
 which has to be set to 1 in the case of 1D deposition.
 
-##### Shape Function 2D
+#### Shape Function 2D
 A two-dimensional shape function in $x$-$y$-direction is given by
 
 $$
@@ -125,7 +126,7 @@ Again, the dimensionality of the shape function is controlled by
 
 which has to be set to 2 in the case of 2D deposition.
 
-##### Shape Function 3D
+#### Shape Function 3D
 A three-dimensional shape function in $x$-$y$-direction is given by {cite}`Stock2012`
 
 $$

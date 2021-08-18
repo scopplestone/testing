@@ -9,6 +9,7 @@ Unfortunately, the GitHub and GitLab servers are not available on machines at th
 restricted internet access. The workaround is to use ssh tunneling and proxy jump or remote forwarding to access 
 the repositories.
 
+(sec:cloning-at-hlrs)=
 ### Cloning with the SSH protocol
 
 Two methods for checking out the code are described in the following.

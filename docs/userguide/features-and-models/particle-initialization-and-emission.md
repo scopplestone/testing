@@ -1,4 +1,5 @@
-## Particle Initialization & Emission
+(sec:particle-initialization-and-emission)=
+# Particle Initialization & Emission
 
 The following section gives an overview of the available options regarding the definition of species and particle initialization and emission. Simulation particles can be inserted initially within the computational domain and/or emitted at every time step. First of all, the number of species is defined by
 
@@ -30,7 +31,7 @@ Different velocity distributions are available for the initialization/emission o
 | maxwell_lpn  | Maxwell-Boltzmann distribution for low particle numbers |
 | WIP          | **WORK IN PROGRESS**                                    |
 
-### Initialization
+## Initialization
 
 At the beginning of a simulation, particles can be inserted using different initialization routines. Initialization regions are defined per species and can overlap. First, the number of initialization conditions/regions has to be defined
 
@@ -66,7 +67,7 @@ In the case of molecules, the rotational and vibrational temperature [K] have to
 
 The parameters given so far are sufficient to define an initialization region for a molecular species using the `cell_local` option. Additional options required for other insertion regions are described in the following.
 
-#### Circular Disc
+### Circular Disc
 
 To define the circular disc the following parameters are required:
 
@@ -79,7 +80,7 @@ To define the circular disc the following parameters are required:
 
 The first and second base vector span a plane, where a circle with the given radius will be defined at the base point.
 
-#### Cylinder
+### Cylinder
 
 To define the cylinder the following parameters are required:
 
@@ -93,7 +94,7 @@ To define the cylinder the following parameters are required:
 
 The first and second base vector span a plane, where a circle with the given radius will be defined at the base point and then extruded in the normal direction up to the cylinder height.
 
-#### Photo-ionization
+### Photo-ionization
 
 A special case is the ionization of a background gas through photon impact, modelling a light pulse. The volume affected by the light pulse is approximated by a cylinder, which is defined as described in Section \ref{sec:particle_cylinder_init}. Additionally, the SpaceIC has to be adapted and additional parameters are required:
 
@@ -138,7 +139,7 @@ The emission area is defined as a disc by the parameters introduced in Section \
     Part-Species1-Init1-FirstQuadrantOnly       = T
     Part-Species1-Init2-FirstQuadrantOnly       = T
 
-### Surface Flux
+## Surface Flux
 
 A surface flux enables the emission of particles at a boundary in order to simulate, e.g. a free-stream. They are defined species-specifically and can overlap. First, the number of surface fluxes has to be given
 
@@ -159,7 +160,7 @@ The remaining parameters such as flow velocity, temperature and number density a
     Part-Species1-Surfaceflux1-TempVib=300.
     Part-Species1-Surfaceflux1-TempElec=300.
 
-#### Circular Inflow
+### Circular Inflow
 
 The emission of particles from a surface flux can be limited to the area within a circle or a ring. The respective boundary has to coincide or be parallel to the xy-, xz, or yz-planes. This allows to define inflow boundaries without specifically meshing the geometrical feature, e.g. small orifices. The feature can be enabled per species and surface flux
 
@@ -185,7 +186,7 @@ The absolute coordinates are defined as follows for the respective normal direct
 
 Multiple circular inflows can be defined on a single boundary through multiple surface fluxes, e.g. to enable the simulation of multiple inlets on a chamber wall.
 
-#### Adaptive Boundaries
+### Adaptive Boundaries
 
 Different adaptive boundaries can be defined as a part of a surface flux to model subsonic in- and outflows, where the emission is adapted based on the prevalent conditions at the boundary. The modelling is based on the publications by {cite}`Farbar2014` and {cite}`Lei2017`.
 
@@ -231,7 +232,7 @@ To verify the resulting mass flow rate of an adaptive surface flux, the followin
 
 This will output a species-specific mass flow rate [kg s$^{-1}$] and the average pressure in the adjacent cells [Pa] for each surface flux condition in the `PartAnalyze.csv`, which gives the current values for the time step. For the former, positive values correspond to a net mass flux into the domain and negative values vice versa. It should be noted that while multiple adaptive boundaries are possible, adjacent boundaries that share a mesh element should be avoided or treated carefully.
 
-#### Missing descriptions
+### Missing descriptions
 
 ReduceNoise, DoForceFreeSurfaceFlux
 
