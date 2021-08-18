@@ -77,7 +77,7 @@ first periodic vector that is defined via `VV=(/6.2831 , 0.  , 0./)` that handle
 orientation on the boundary for the vector. Note that each periodic boundary must have one positive and one negative corresponding
 boundary for the same periodic vector.
 
-```{figure} mesh/mesh.jpg
+```{figure} mesh/tut-pic-pw-mesh.jpg
 ---
 name: fig:plasma-wave-mesh
 ---
@@ -407,7 +407,7 @@ The electric potential field can be viewed, e.g., by opening `plasma_wave_Soluti
 `Phi`, which should look like the following
 
 
-```{figure} results/results.jpg
+```{figure} results/tut-pic-pw-results.jpg
 ---
 name: fig:plasma-wave-results
 ---
