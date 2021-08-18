@@ -87,7 +87,7 @@ maximum time step increase towards the end point $\Delta t (x_{\mathrm{end}})=f 
     Part-VariableTimeStep-EndPoint      =  (/-99999.,0.0,0.0/)
 
 Besides DSMC, the linear scaling is available for the BGK and FP method. Finally, specific options for 2D/axisymmetric simulations
-are discussed in Section \ref{sec:2DAxi_vts}.
+are discussed in Section {ref}`sec:2D-axisymmetric`
 
 ## Symmetric Simulations
 
@@ -107,6 +107,7 @@ Boundaries in $y$ and $z$ direction shall be defined as 'symmetric'.
     Part-Boundary5-SourceName=SYM
     Part-Boundary5-Condition=symmetric
 
+(sec:2D-axisymmetric)=
 ### 2D/Axisymmetric Simulations
 
 To enable two-dimensional simulations, the symmetry order has to be set

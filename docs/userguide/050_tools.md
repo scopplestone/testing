@@ -1,19 +1,25 @@
-# Tools Overview
+# Tools
 
-This section gives an overview over the tools and scripts contained in the **PICLas** repository. It also provides references to the tutorials where their usage is explained.
+This section gives an overview over the tools and scripts contained in the **PICLas** repository. It also provides references to
+the tutorials where their usage is explained.
 
+(sec:tools-xsec-collision)=
 ## Collision cross-section database
 
-A tool to create a database containing cross-section data can be found in the *tools* folder: `piclas/tools/crosssection_database/`. The Python script (python3.7) `create_xsec_db_lxcat.py` can be used to populate a PICLas-compatible cross-section database, using the `numpy`, `h5py` and `lxcat_data_parser` packages.
+A tool to create a database containing cross-section data can be found in the *tools* folder: `piclas/tools/crosssection_database/`.
+The Python script (python3.7) `create_xsec_db_lxcat.py` can be used to populate a PICLas-compatible cross-section database, using
+the `numpy`, `h5py` and `lxcat_data_parser` packages.
 
     python3.7 create_xsec_db_lxcat.py
 
-A database (containing multiple species and cross-section types) downloaded directly from the Plasma Data Exchange Project and the [LXCat database](https://fr.lxcat.net/home/) and the name of output database can be supplied to the script with
+A database (containing multiple species and cross-section types) downloaded directly from the Plasma Data Exchange Project and the
+[LXCat database](https://fr.lxcat.net/home/) and the name of output database can be supplied to the script with
 
     database_input = "Database.txt"
     database_output = "Database.h5"
 
-Currently, PICLas only utilizes the elastic, effective and vibrational cross-sections, however, all excitation cross-section types are grouped and stored in the output file. An example is given below 
+Currently, PICLas only utilizes the elastic, effective and vibrational cross-sections, however, all excitation cross-section types
+are grouped and stored in the output file. An example is given below 
 
     CO2-electron (group)
         EFFECTIVE (dataset)
@@ -25,7 +31,8 @@ Currently, PICLas only utilizes the elastic, effective and vibrational cross-sec
         REACTION (group)
             CO2Ion1-electron-electron
 
-Datasets, which cannot be identified as rotational, vibrational or electronic excitation will grouped within an `UNDEFINED` group. By defining a species list, only certain species can be included in the output database
+Datasets, which cannot be identified as rotational, vibrational or electronic excitation will grouped within an `UNDEFINED` group.
+By defining a species list, only certain species can be included in the output database
 
     species_list = ["Ar","CO"]
 
@@ -33,15 +40,18 @@ Finally, the utilized cross-section data should be properly referenced by adding
 
     reference = 'XXX database, www.lxcat.net, retrieved on MMMM DD, YYYY.'
 
-Users of cross-section data are encouraged to download the data directly from the [LXCat project website](https://fr.lxcat.net/home/) and to consider the guidelines regarding referencing and publication.
+Users of cross-section data are encouraged to download the data directly from the [LXCat project website](https://fr.lxcat.net/home/)
+and to consider the guidelines regarding referencing and publication.
 
-Chemical reaction can be added to the database manually using [HDF View](https://www.hdfgroup.org/downloads/hdfview/). Make sure to re-open the file as `Read/Write` to be able to modify and create the dataset.
+Chemical reaction can be added to the database manually using [HDF View](https://www.hdfgroup.org/downloads/hdfview/).
+Make sure to re-open the file as `Read/Write` to be able to modify and create the dataset.
 
 ## Visualization (NEEDS AN UPDATE)
 
 ### Installation of ParaView and Plugin
 
-A ParaView reader based on `posti_visu` to load **PICLas** state files in ParaView. Provides the interface to adjust `posti_visu` parameters in the ParaView GUI. For this purpose the `libVisuReader.so` has to be loaded as a Plugin in ParaView.
+A ParaView reader based on `posti_visu` to load **PICLas** state files in ParaView. Provides the interface to adjust `posti_visu`
+parameters in the ParaView GUI. For this purpose the `libVisuReader.so` has to be loaded as a Plugin in ParaView.
 
 #### Currently Tested Combinations
 
@@ -130,8 +140,8 @@ Additional steps:
 patch -p1 < FileParser.patch
 ```
 im ParaView root directory.
-   * PATCH for 5.3.0: [FileParser.patch](/uploads/ec2723307910f061389d83bba0c1897c/FileParser.patch), [ErrorMessage.patch](/uploads/793df4cdaee862d10a48fdc321b8df93/ErrorMessage.patch)
-   * PATCH for 5.4.1: [FileParser.patch](/uploads/4f413a1cac1a04645749def3b016c28d/FileParser.patch), [ErrorMessage.patch](/uploads/412d199f264c51aafebb871e16fd730b/ErrorMessage.patch)
+   <!--* PATCH for 5.3.0: [FileParser.patch](/uploads/ec2723307910f061389d83bba0c1897c/FileParser.patch), [ErrorMessage.patch](/uploads/793df4cdaee862d10a48fdc321b8df93/ErrorMessage.patch)-->
+   <!--* PATCH for 5.4.1: [FileParser.patch](/uploads/4f413a1cac1a04645749def3b016c28d/FileParser.patch), [ErrorMessage.patch](/uploads/412d199f264c51aafebb871e16fd730b/ErrorMessage.patch)-->
 * Compile ParaView with the following cmake command and don't forget the exports
 * Compile the plugin
 
@@ -206,8 +216,8 @@ for:
 * (usr/bin/qhelpgenerator)
 * if somebody required VisitBridge (e.g. for CGNS files), set -DPARAVIEW_USE_VISITBRIDGE to ON
 * Apply the patch here (please vote): [FileParser-Patch fuer Timestamps](https://paraview.uservoice.com/forums/11350-general/suggestions/12591231-expand-the-name-patterns-for-temporal-file-series)
-   * PATCH for 5.3.0: [FileParser.patch](/uploads/ec2723307910f061389d83bba0c1897c/FileParser.patch), [ErrorMessage.patch](/uploads/793df4cdaee862d10a48fdc321b8df93/ErrorMessage.patch)
-   * PATCH for 5.4.1: [FileParser.patch](/uploads/4f413a1cac1a04645749def3b016c28d/FileParser.patch), [ErrorMessage.patch](/uploads/412d199f264c51aafebb871e16fd730b/ErrorMessage.patch)
+   <!--* PATCH for 5.3.0: [FileParser.patch](/uploads/ec2723307910f061389d83bba0c1897c/FileParser.patch), [ErrorMessage.patch](/uploads/793df4cdaee862d10a48fdc321b8df93/ErrorMessage.patch)-->
+   <!--* PATCH for 5.4.1: [FileParser.patch](/uploads/4f413a1cac1a04645749def3b016c28d/FileParser.patch), [ErrorMessage.patch](/uploads/412d199f264c51aafebb871e16fd730b/ErrorMessage.patch)-->
 
 ParaView compilation:
 ```
@@ -238,18 +248,22 @@ POSTI_USE_PARAVIEW = ON
 ```
  alias paraview='paraview --mpi'
 ```
-* Multiple plugins can be used, e.g., from different `build` folders, by setting the variable `PV_PLUGIN_PATH`. The following command can be utilized
+* Multiple plugins can be used, e.g., from different `build` folders, by setting the variable `PV_PLUGIN_PATH`.
+The following command can be utilized
 ```
 PV_PLUGIN_PATH=pfad_zum_flexi_build_ordner/lib paraview
 ```
 
 ### ParaView on Hazel Hen (ParaView 5.3)
 
-HLRS is providing ParaView as a module. Some special steps have to be taken to connect a ParaView client on a local machine to a server on the Hazel Hen.
+HLRS is providing ParaView as a module. Some special steps have to be taken to connect a ParaView client on a local machine to a
+server on the Hazel Hen.
 
 #### Compile client
 
-First, you need to compile the sources provided by the HLRS, since they are not the same as the official 5.3.0 sources (because reasons). The source files can be found on Hazel Hen in the folder `/opt/hlrs/tools/paraview/5.3`. Follow the steps above to compile these source files on your local machine, but make sure that the following options are set:
+First, you need to compile the sources provided by the HLRS, since they are not the same as the official 5.3.0 sources
+(because reasons). The source files can be found on Hazel Hen in the folder `/opt/hlrs/tools/paraview/5.3`. Follow the steps
+above to compile these source files on your local machine, but make sure that the following options are set:
 * PARAVIEW_QT_VERSION=4
 * VTK_RENDERING_BACKEND=OpenGl
 
@@ -257,7 +271,8 @@ since otherwise the handshake between client and server will not work.
 
 #### Compile Plugin on Hazel Hen
 
-Compiling the Plugin on Hazel Hen must be done on a mom node, not a login node since during the compile process some helper programs are called which can not be executed on a login node. So first, get an interactive job.
+Compiling the Plugin on Hazel Hen must be done on a mom node, not a login node since during the compile process some helper
+programs are called which can not be executed on a login node. So first, get an interactive job.
 The Plugin requires dynamic linking, activate that by running
 ```
 export CRAYPE_LINK_TYPE=dynamic
@@ -269,11 +284,13 @@ module load tools/paraview/5.3.0-git-master-parallel-Mesa
 module unload cray-hdf5-parallel/1.10.2.0
 module load cray-hdf5-parallel/1.10.1.1
 ```
-ATTENTION: If you don't do it in this order, the wrong HDF5 module will be loaded and/or the environment variables not set correctly. To be sure everything worked, check if `HDF5_DIR` is pointing to `/opt/cray/pe/hdf5-parallel/1.10.1.1/GNU/5.1/`.
+ATTENTION: If you don't do it in this order, the wrong HDF5 module will be loaded and/or the environment variables not set correctly.
+To be sure everything worked, check if `HDF5_DIR` is pointing to `/opt/cray/pe/hdf5-parallel/1.10.1.1/GNU/5.1/`.
 
 The older compiler version is necessary since HDF5 1.10.1.1 (which is the one used by ParaView) was build with that version.
 
-Switch to/create your build directory and generate a Makefile - remember to turn `USE_PARAVIEW` on. Compilation must be done using the `aprun` command:
+Switch to/create your build directory and generate a Makefile - remember to turn `USE_PARAVIEW` on. Compilation must be done using
+the `aprun` command:
 ```
 aprun -n 1 make visuReader
 ```
@@ -300,7 +317,8 @@ aprun -n 24 pvserver
 STEP 1:
 
 The mom node has to be reachable from your local machine. To achieve this, there are several options:
-* Option 1: Add the mom nodes to your ssh config using the login nodes as a [proxy ](https://wiki.gentoo.org/wiki/SSH_jump_host). Add something like this to your `~/.ssh/config` file:
+* Option 1: Add the mom nodes to your ssh config using the login nodes as a [proxy ](https://wiki.gentoo.org/wiki/SSH_jump_host).
+Add something like this to your `~/.ssh/config` file:
 ```
 Host hen
   User iagmustermann
@@ -311,19 +329,29 @@ Host mom01
   HostName mom01
   ProxyJump hen
 ```
-Repeat the last four lines for all mom nodes. The `User` lines are only needed if your username on HazelHen differs from that on your local machine. For ssh versions less than 7.3, replace the line `ProxyJump  hen` by `ProxyCommand ssh -W %h:%p hen`.
-* Option 2: Use the special queue `io` which will put the job on a mom node that is reachable from everywhere inside of the university network. (ATTENTION: The `io`-queue is currently only open for test users! The nodes are named something like `hazelhen-network10` and can be reached using `hazelhen-network10.hww.hlrs.de`.)
+Repeat the last four lines for all mom nodes. The `User` lines are only needed if your username on HazelHen differs from that on
+your local machine. For ssh versions less than 7.3, replace the line `ProxyJump  hen` by `ProxyCommand ssh -W %h:%p hen`.
+* Option 2: Use the special queue `io` which will put the job on a mom node that is reachable from everywhere inside of the
+university network. (ATTENTION: The `io`-queue is currently only open for test users! The nodes are named something like
+`hazelhen-network10` and can be reached using `hazelhen-network10.hww.hlrs.de`.)
 * Option 3: Change the script to manually tunnel twice - once from your local machine to a login node and then to the mom node.
 
 STEP 2:
 
-To connect to the server, a helper script `pvconnect` can be found on Hazel Hen in the folder `/sw/hazelhen/hlrs/tools/paraview/5.3.0-git-master/Pre/bin`. A slightly modified version can be found [here](uploads/15eb2c6e5c10f62b166fdd38ffab39ed/pvconnect) (adapt `/PATH/TO/PARAVIEW` in the script before running it).  This script will create a ssh tunnel to the mom node that runs the pvserver job and then starts a ParaView-client on your local machine that automatically connects to the server. The syntax is
+To connect to the server, a helper script `pvconnect` can be found on Hazel Hen in the folder
+`/sw/hazelhen/hlrs/tools/paraview/5.3.0-git-master/Pre/bin`. A slightly modified version can be found
+<!--[here](uploads/15eb2c6e5c10f62b166fdd38ffab39ed/pvconnect) -->
+here (adapt `/PATH/TO/PARAVIEW` in the script before running it). 
+This script will create a ssh tunnel to the mom node that runs the pvserver job and then starts a ParaView-client on your local
+machine that automatically connects to the server. The syntax is
 ```
 pvconnect -pvs nidXXXXXX:YYYYYYY -via momZZ
 ```
-where nidXXXXXX is the name of the pvserver and YYYYYY the port of the server, both of which are shown when the server starts. The connection is created through momZZ, where you need to insert the number of the mom node the pvserver job runs on.
+where nidXXXXXX is the name of the pvserver and YYYYYY the port of the server, both of which are shown when the server starts.
+The connection is created through momZZ, where you need to insert the number of the mom node the pvserver job runs on.
 
-If you work with the `PV_PLUGIN_PATH` environment variable: Reset it with `export PV_PLUGIN_PATH=''` before starting the script to avoid errors.
+If you work with the `PV_PLUGIN_PATH` environment variable: Reset it with `export PV_PLUGIN_PATH=''` before starting the script
+to avoid errors.
 
 
 ## Initialization of An Initial Particle Distribution Function (NEEDS UPDATING)

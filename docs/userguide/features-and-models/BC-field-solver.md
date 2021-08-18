@@ -163,16 +163,21 @@ used, e.g.,
 
     DielectricTestCase = FishEyeLens
 
-where the following pre-defined cases are available as given in table \ref{tab:dielectric_test_cases}.
+where the following pre-defined cases are available as given in table {numref}`tab:dielectric_test_cases`
 
-Table: Dielectric Test Cases \label{tab:dielectric_test_cases}
-
-  |            Option            |                          Additional Parameters                          |                                                                              Notes                                                                               |
-  | :--------------------------: | :---------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-  |        `FishEyeLens`         |                                  none                                   |                                      function with radial dependence: $\varepsilon_{r}=n_{0}^{2}/(1 + (r/r_{max})^{2})^{2}$                                      |
-  |           `Circle`           | `DielectricRadiusValue, DielectricRadiusValueB`, `DielectricCircleAxis` | Circular dielectric in x-y-direction (constant in z-direction)  with optional cut-out radius DielectricRadiusValueB along the axis given by DielectricCircleAxis |
-  | `DielectricResonatorAntenna` |                         `DielectricRadiusValue`                         |                                                 Circular dielectric in x-y-direction (only elements with $z>0$)                                                  |
-  |          `FH_lens`           |                                  none                                   |                                               specific geometry (`SUBROUTINE SetGeometry` yields more information)                                               |
+```{table} Dielectric Test Cases
+---
+name: tab:dielectric_test_cases
+---
+  |            Option            |            Additional Parameters            |                                             Notes                                            |
+  | :--------------------------: | :-----------------------------------------: | :------------------------------------------------------------------------------------------: |
+  |         `FishEyeLens`        |                     none                    |    function with radial dependence: $\varepsilon_{r}=n_{0}^{2}/(1 + (r/r_{max})^{2})^{2}$    |
+  |           `Circle`           |           `DielectricRadiusValue`,          |                Circular dielectric in x-y-direction (constant in z-direction)                |
+  |                              |          `DielectricRadiusValueB`,          |                 with optional cut-out radius DielectricRadiusValueB along the                |
+  |                              |            `DielectricCircleAxis`           |                              axis given by DielectricCircleAxis                              |
+  | `DielectricResonatorAntenna` |           `DielectricRadiusValue`           |                Circular dielectric in x-y-direction (only elements with $z>0$)               |
+  |           `FH_lens`          |                     none                    |             specific geometry (`SUBROUTINE SetGeometry` yields more information)             |
+```
 
 For the Maxwell solver (DGSEM), the interface fluxes between vacuum and dielectric regions can
 either be conserving or non-conserving, which is selected by
