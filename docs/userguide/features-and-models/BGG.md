@@ -19,12 +19,12 @@ For modelling of particle collisions with the Particle-in-Cell method, often the
 
 $$ P = 1 - e^{-\sigma v \Delta t n_{\mathrm{gas}}}.$$
 
-In PICLas, the null collision method after [@Birdsall1991],[@Vahedi1995] is available, where the number of collision pairs is determined based a maximum collision frequency. Thus, the computational effort is reduced as not every particle has to be checked for a collision, such as in the previously described DSMC-based background gas. To activate the MCC procedure, the collision cross-sections have to be supplied via read-in from a database
+In PICLas, the null collision method after {cite}`Birdsall1991`,{cite}`Vahedi1995` is available, where the number of collision pairs is determined based a maximum collision frequency. Thus, the computational effort is reduced as not every particle has to be checked for a collision, such as in the previously described DSMC-based background gas. To activate the MCC procedure, the collision cross-sections have to be supplied via read-in from a database
 
     Particles-CollXSec-Database = MCC_Database.h5
     Particles-CollXSec-NullCollision = TRUE
 
-Cross-section data can be retrieved from the [LXCat database](https://fr.lxcat.net/home/) [@Pitchford2017] and converted with a Python script provided in the tools folder: `piclas/tools/crosssection_database`. Details on how to create an own database with custom cross-section data is given in Section \ref{sec:tools_mcc}. Finally, the input which species should be treated with the MCC model is required
+Cross-section data can be retrieved from the [LXCat database](https://fr.lxcat.net/home/) {cite}`Pitchford2017` and converted with a Python script provided in the tools folder: `piclas/tools/crosssection_database`. Details on how to create an own database with custom cross-section data is given in Section \ref{sec:tools_mcc}. Finally, the input which species should be treated with the MCC model is required
 
     Part-Species2-SpeciesName = electron
     Part-Species2-UseCollXSec = T

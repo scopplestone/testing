@@ -20,6 +20,7 @@ caption: Contents
 features-and-models/index.md
 040_visu_output.md
 050_tools.md
+references.md
 tutorials/index.md
 070_unittest.md
 080_cluster_guide.md

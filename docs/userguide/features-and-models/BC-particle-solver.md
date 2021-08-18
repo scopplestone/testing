@@ -26,7 +26,7 @@ For `rot_periodic` exactly two corresponding boundaries must be defined. Every p
 
 ### Diffuse Wall
 
-Gas-surface interaction can be modelled with the extended Maxwellian model [@Padilla2009], using accommodation coefficients of the form
+Gas-surface interaction can be modelled with the extended Maxwellian model {cite}`Padilla2009`, using accommodation coefficients of the form
 
 $$\alpha = \frac{E_i-E_r}{E_i - E_w}$$
 
@@ -100,7 +100,7 @@ The usage of rotational periodic boundary conditions is limited to cases, where 
 
 ### Porous Wall / Pump
 
-The porous boundary condition uses a removal probability to determine whether a particle is deleted or reflected at the boundary. The main application of the implemented condition is to model a pump, according to [@Lei2017]. It is defined by giving the number of porous boundaries and the respective boundary number (`BC=2` corresponds to the `BC_WALL` boundary defined in the previous section) on which the porous condition is.
+The porous boundary condition uses a removal probability to determine whether a particle is deleted or reflected at the boundary. The main application of the implemented condition is to model a pump, according to {cite}`Lei2017`. It is defined by giving the number of porous boundaries and the respective boundary number (`BC=2` corresponds to the `BC_WALL` boundary defined in the previous section) on which the porous condition is.
 
     Surf-nPorousBC=1
     Surf-PorousBC1-BC=2
@@ -158,10 +158,10 @@ The available conditions (`Part-BoundaryX-SurfaceModel=`) are described in the t
 |    Model    | Description                                                                                                                                                                         |
 | :---------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 0 (default) | Standard extended Maxwellian scattering                                                                                                                                             |
-|      2      | Simple recombination on surface collision, where an impinging particle as given by Ref. [@Reschke2019].                                                                             |
-|      3      | Kinetic Monte Carlo surface: Replicates surfaces with a specified lattice structure, either fcc(100) or fcc(111) and models complete catalysis as given by Ref. [@Reschke2019].     |
-|      5      | Secondary electron emission as given by Ref. [@Levko2015].                                                                                                                          |
-|      7      | Secondary electron emission due to ion impact (SEE-I with $Ar^{+}$ on different metals) as used in Ref. [@Pflug2014] and given by Ref. [@Depla2009] with a constant yield of 13 \%. |
+|      2      | Simple recombination on surface collision, where an impinging particle as given by Ref. {cite}`Reschke2019`.                                                                             |
+|      3      | Kinetic Monte Carlo surface: Replicates surfaces with a specified lattice structure, either fcc(100) or fcc(111) and models complete catalysis as given by Ref. {cite}`Reschke2019`.     |
+|      5      | Secondary electron emission as given by Ref. {cite}`Levko2015`.                                                                                                                          |
+|      7      | Secondary electron emission due to ion impact (SEE-I with $Ar^{+}$ on different metals) as used in Ref. {cite}`Pflug2014` and given by Ref. {cite}`Depla2009` with a constant yield of 13 \%. |
 |     101     | Evaporation from surfaces according to a Maxwellian velocity distribution.                                                                                                          |
 |     102     | Evaporation according to MD-fitted velocity distributions.                                                                                                                          |
 

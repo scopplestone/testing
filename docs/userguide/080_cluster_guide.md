@@ -1,4 +1,4 @@
-# Cluster guidelines
+# Cluster Guidelines
 
 ## Simulating at HLRS
 

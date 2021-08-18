@@ -22,7 +22,7 @@ contribute, hence, resulting in a non-local deposition scheme.
 
 #### Shape Function
 
-High-order field solvers require deposition methods that reduce the noise, e.g., shape functions [@Jacobs2006]. The standard 3D shape function is selected by
+High-order field solvers require deposition methods that reduce the noise, e.g., shape functions {cite}`Jacobs2006`. The standard 3D shape function is selected by
 
     PIC-Deposition-Type = shape_function
 
@@ -126,7 +126,7 @@ Again, the dimensionality of the shape function is controlled by
 which has to be set to 2 in the case of 2D deposition.
 
 ##### Shape Function 3D
-A three-dimensional shape function in $x$-$y$-direction is given by [@Stock2012]
+A three-dimensional shape function in $x$-$y$-direction is given by {cite}`Stock2012`
 
 $$
 S_{3D}(r,R,\alpha)=\frac{\Gamma(\alpha+5/2)}{\pi^{3/2}R^{3}\Gamma(\alpha+1)}\left( 1-\left( \frac{r}{R} \right)^{2} \right)^{\alpha}~,

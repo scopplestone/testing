@@ -187,17 +187,17 @@ Multiple circular inflows can be defined on a single boundary through multiple s
 
 #### Adaptive Boundaries
 
-Different adaptive boundaries can be defined as a part of a surface flux to model subsonic in- and outflows, where the emission is adapted based on the prevalent conditions at the boundary. The modelling is based on the publications by [@Farbar2014] and [@Lei2017].
+Different adaptive boundaries can be defined as a part of a surface flux to model subsonic in- and outflows, where the emission is adapted based on the prevalent conditions at the boundary. The modelling is based on the publications by {cite}`Farbar2014` and {cite}`Lei2017`.
 
     Part-Species1-Surfaceflux1-Adaptive=TRUE
     Part-Species1-Surfaceflux1-Adaptive-Type=1
 
 An overview over the available types is given below.
 
- * `Type=1`: Constant static pressure and temperature inlet, defined as Type 1 in Ref. [@Farbar2014]
- * `Type=2`: Constant static pressure outlet, defined as Type 1 in Ref. [@Farbar2014]
- * `Type=3`: Constant mass flow and temperature inlet, where the given mass flow and sampled velocity are used to determine the number of particles for the surface flux. It requires the BC to be defined as `open`. Defined as Type 2 in Ref. [@Farbar2014]
- * `Type=4`: Constant mass flow inlet and temperature inlet, where number of particles to be inserted is determined directly from the mass flow and the number of particles leaving the domain, $N_{\mathrm{in}}=N_{\dot{m}} + N_{\mathrm{out}}$. Defined as cf_3 in Ref. [@Lei2017]
+ * `Type=1`: Constant static pressure and temperature inlet, defined as Type 1 in Ref. {cite}`Farbar2014`
+ * `Type=2`: Constant static pressure outlet, defined as Type 1 in Ref. {cite}`Farbar2014`
+ * `Type=3`: Constant mass flow and temperature inlet, where the given mass flow and sampled velocity are used to determine the number of particles for the surface flux. It requires the BC to be defined as `open`. Defined as Type 2 in Ref. {cite}`Farbar2014`
+ * `Type=4`: Constant mass flow inlet and temperature inlet, where number of particles to be inserted is determined directly from the mass flow and the number of particles leaving the domain, $N_{\mathrm{in}}=N_{\dot{m}} + N_{\mathrm{out}}$. Defined as cf_3 in Ref. {cite}`Lei2017`
 
 Depending of the type of the chosen boundary type either the mass flow [kg/s] or the static pressure [Pa] have to be given
 
@@ -235,7 +235,7 @@ This will output a species-specific mass flow rate [kg s$^{-1}$] and the average
 
 ReduceNoise, DoForceFreeSurfaceFlux
 
-DoPoissonRounding: [@Tysanner2004]
+DoPoissonRounding: {cite}`Tysanner2004`
 
-AcceptReject, ARM_DmaxSampleN: [@Garcia2006]
+AcceptReject, ARM_DmaxSampleN: {cite}`Garcia2006`
 

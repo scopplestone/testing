@@ -21,7 +21,7 @@ For this purpose, different coil and permanent magnet geometries can be defined.
 
     PIC-CalcBField-OutputVTK = T
 
-In the following the parameters for different coils and permanent magnets based on the implementation by Hinsberger [@Hinsberger2017] are presented.
+In the following the parameters for different coils and permanent magnets based on the implementation by Hinsberger {cite}`Hinsberger2017` are presented.
 
 ### Magnetic Field by Permanent Magnets
 

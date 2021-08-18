@@ -1,4 +1,4 @@
-# Features \& Models
+# Features & Models
 
 The goal of PICLas is to enable to approximation of the complete Boltzmann equation:
 

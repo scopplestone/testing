@@ -180,7 +180,7 @@ either be conserving or non-conserving, which is selected by
 
     DielectricFluxNonConserving = T
 
-which uses non-conserving fluxes. This is recommended for improved simulation results, as described in [@Copplestone2019b].
+which uses non-conserving fluxes. This is recommended for improved simulation results, as described in {cite}`Copplestone2019b`.
 When particles are to be considered in a simulation, these are generally removed from dielectric
 materials during the emission (inserting) stage, but may be allowed to exist within dielectrics by
 setting

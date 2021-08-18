@@ -1,55 +1,4 @@
 ## Direct Simulation Monte Carlo
-## Fokker-Planck Collision Operator \label{sec:fpflow}
-
-The implementation of the FP-based collision operator is based on the publications by [@Gorji2014] and [@Pfeiffer2017]. It is a method, which allows the simulation of gas flows in the continuum and transitional regime, where the DSMC method is computationally too expensive. The collision integral is hereby approximated by a drift and diffusion process
-
-$$  \left.\frac{\partial f}{\partial t}\right|_{\mathrm{coll}}\approx-\sum_{i=1}^3 {\frac{\partial }{\partial v_i}(A_i f)+\frac{1}{2}\sum_{i=1}^3 \sum_{j=1}^3\frac{\partial ^2 }{\partial v_i\partial v_j}(D_{ij}f)}, $$
-
-where $\mathbf{A}$ is the drift vector and $\mathcal{D}$ the diffusion matrix.
-
-The current implementation supports:
-
-- 2 different methods: Cubic and Ellipsoidal Statistical (ES)
-- Single species, monatomic and polyatomic gases
-- Thermal non-equilibrium with rotational and vibrational excitation (continuous or quantized treatment)
-- 2D/Axisymmetric simulations
-- Variable time step (adaption of the distribution according to the maximal relaxation factor and linear scaling)
-
-Relevant publications of the developers:
-
-- Implementation of the cubic Fokker-Planck in PICLas [@Pfeiffer2017]
-- Comparison of the cubic and ellipsoidal statistical Fokker-Planck [@Jun2019]
-- Simulation of a nozzle expansion (including the pressure chamber) with ESBGK, ESFP and coupled ESBGK-DSMC, comparison to experimental measurements [@Pfeiffer2019a]
-
-To enable the simulation with the FP module, the respective compiler setting has to be activated:
-
-    PICLAS_TIMEDISCMETHOD = FP-Flow
-
-A parameter file and species initialization file is required, analogous to the DSMC setup. It is recommended to utilize a previous DSMC parameter file to ensure a complete simulation setup. To enable the simulation with the FP methods, select the Fokker-Planck method, cubic (`=1`) and ES (`=2`):
-
-    Particles-FP-CollModel = 2
-
-The vibrational excitation can be controlled with the following flags, including the choice between continuous and quantized vibrational energy:
-
-    Particles-FP-DoVibRelaxation = T
-    Particles-FP-UseQuantVibEn   = T
-
-An octree cell refinement until the given number of particles is reached can be utilized, which corresponds to an equal refinement in all three directions (x,y,z):
-
-    Particles-FP-DoCellAdaptation = T
-    Particles-FP-MinPartsPerCell  = 10
-
-A coupled FP-DSMC simulation can be enabled, where the FP method will be utilized if the number density $[\text{m}^{-3}]$ is above a certain value:
-
-    Particles-CoupledFPDSMC       = T
-    Particles-FP-DSMC-SwitchDens  = 1E22
-
-The flag `Particles-DSMC-CalcQualityFactors` controls the output of quality factors such as mean/maximal relaxation factor (mean: average over a cell, max: maximal value within the octree), max rotational relaxation factor, which are defined as
-
-$$ \frac{\Delta t}{\tau} < 1,$$
-
-where $\Delta t$ is the chosen time step and $1/\tau$ the relaxation frequency. The time step should be chosen as such that the relaxation factors are below unity. The `FP_DSMC_Ratio` gives the percentage of the sampled time during which the FP model was utilized. In a couple FP-DSMC simulation this variable indicates the boundary between FP and DSMC. However, a value below 1 can occur for pure FP simulations due to low particle numbers, when an element is skipped. Additionally, the Prandtl number utilized by the ESFP model is given.
-
 
 To enable the simulation with DSMC, an appropriate time discretization method including the DSMC module should be chosen before the code compilation. A stand-alone DSMC simulation can be enabled by compiling PICLas with the following parameter
 
@@ -95,7 +44,7 @@ Depending on the utilized collision model, different parameters have to be defin
 
 More detail on the utilization of species-specific, collision-specific parameters and the utilization of the Variable Soft Sphere (VSS) model are given in Section \ref{sec:dsmc_collision}.
 
-In case of chemical reactions, the input of a species-specific heat/enthalpy of formation [K] is required. A reliable source for these reference values are the [Active Thermochemical Tables (ATcT)](https://atct.anl.gov/) by the Argonne National Laboratory [@Ruscic2004;@Ruscic2005].
+In case of chemical reactions, the input of a species-specific heat/enthalpy of formation [K] is required. A reliable source for these reference values are the [Active Thermochemical Tables (ATcT)](https://atct.anl.gov/) by the Argonne National Laboratory {cite}`Ruscic2004,Ruscic2005`.
 
     Part-Species1-HeatOfFormation_K = 0.0
 
@@ -130,7 +79,7 @@ These parameters allow the simulation of non-reactive gases. Additional paramete
 
 ### Pairing & Collision Modelling
 
-By default, a conventional statistical pairing algorithm randomly pairs particles within a cell. Here, the mesh should resolve the mean free path to avoid numerical diffusion. To circumvent this requirement, an octree-based sorting and cell refinement [@Pfeiffer2013] can be enabled by
+By default, a conventional statistical pairing algorithm randomly pairs particles within a cell. Here, the mesh should resolve the mean free path to avoid numerical diffusion. To circumvent this requirement, an octree-based sorting and cell refinement {cite}`Pfeiffer2013` can be enabled by
 
     Particles-DSMC-UseOctree        = T
     Particles-OctreePartNumNode     = 80        ! (3D default, 2D default: 40)
@@ -142,7 +91,7 @@ To further reduce numerical diffusion, the nearest neighbour search for the part
 
     Particles-DSMC-UseNearestNeighbour = T
 
-An additional attempt to increase the quality of simulations results is to prohibit repeated collisions between particles [@Shevyrin2005;@Akhlaghi2018]. This options is enabled by default in 2D/axisymmetric simulations, but disabled by default in 3D simulations.
+An additional attempt to increase the quality of simulations results is to prohibit repeated collisions between particles {cite}`Shevyrin2005,Akhlaghi2018`. This options is enabled by default in 2D/axisymmetric simulations, but disabled by default in 3D simulations.
 
     Particles-DSMC-ProhibitDoubleCollision = T
 
@@ -168,7 +117,7 @@ In order to enable the collision-specific definition of the VHS/VSS parameters, 
     Part-Collision1 - alphaVSS       = 1.448
     Part-Collision2 - partnerSpecies = (/2,1/)              ! Collision2: Parameters for the collision between species 2 and 1
 
-The numbers in the `partnerSpecies` definition correspond to the species numbers and their order is irrelevant. Collision-specific parameters can be obtained from e.g. [@Swaminathan-Gopalan2016].
+The numbers in the `partnerSpecies` definition correspond to the species numbers and their order is irrelevant. Collision-specific parameters can be obtained from e.g. {cite}`Swaminathan-Gopalan2016`.
 
 #### Cross-section based collision probabilities
 
@@ -180,12 +129,12 @@ To consider inelastic collisions and relaxation processes within PICLas, the cho
 
     Particles-DSMC-CollisMode = 2
 
-Two selection procedures are implemented, which differ whether only a single or as many as possible relaxation processes can occur for a collision pair. The default model (`SelectionProcedure = 1`) allows the latter, so-called multi-relaxation method, whereas `SelectionProcedure = 2` enables the prohibiting double-relaxation method [@Haas1994b]
+Two selection procedures are implemented, which differ whether only a single or as many as possible relaxation processes can occur for a collision pair. The default model (`SelectionProcedure = 1`) allows the latter, so-called multi-relaxation method, whereas `SelectionProcedure = 2` enables the prohibiting double-relaxation method {cite}`Haas1994b`
 
     Particles-DSMC-SelectionProcedure = 1    ! Multi-relaxation
                                         2    ! Prohibiting double-relaxation
 
-Rotational, vibrational and electronic relaxation (not included by default, see Section \ref{sec:dsmc_electronic_relaxation} for details) processes are implemented in PICLas and their specific options to use either constant relaxation probabilities (default) or variable, mostly temperature dependent, relaxation probabilities are discussed in the following sections. To achieve consistency between continuum and particle-based relaxation modelling, the correction factor of Lumpkin [@Lumpkin1991] can be enabled (default = F):
+Rotational, vibrational and electronic relaxation (not included by default, see Section \ref{sec:dsmc_electronic_relaxation} for details) processes are implemented in PICLas and their specific options to use either constant relaxation probabilities (default) or variable, mostly temperature dependent, relaxation probabilities are discussed in the following sections. To achieve consistency between continuum and particle-based relaxation modelling, the correction factor of Lumpkin {cite}`Lumpkin1991` can be enabled (default = F):
 
     Particles-DSMC-useRelaxProbCorrFactor = T
 
@@ -197,14 +146,14 @@ To adjust the rotational relaxation this variable has to be changed:
                                     2   ! Model by Boyd
                                     3   ! Model by Zhang
 
-If `RotRelaxProb` is between 0 and 1, it is set as a constant rotational relaxation probability (default = 0.2). `RotRelaxProb = 2` activates the variable rotational relaxation model according to Boyd [@Boyd1990a]. Consequently, for each molecular species two additional parameters have to be defined, the rotational collision number and the rotational reference temperature. As an example, nitrogen is used [@Boyd1990b].
+If `RotRelaxProb` is between 0 and 1, it is set as a constant rotational relaxation probability (default = 0.2). `RotRelaxProb = 2` activates the variable rotational relaxation model according to Boyd {cite}`Boyd1990a`. Consequently, for each molecular species two additional parameters have to be defined, the rotational collision number and the rotational reference temperature. As an example, nitrogen is used {cite}`Boyd1990b`.
 
     Part-Species1-CollNumRotInf = 23.3
     Part-Species1-TempRefRot = 91.5
 
 It is not recommended to use this model with the prohibiting double-relaxation selection procedure (`Particles-DSMC-SelectionProcedure = 2`). Low collision energies result in high relaxation probabilities, which can lead to cumulative collision probabilities greater than 1.
 
-If the relaxation probability is equal to 3, the relaxation model of Zhang et al. [@Zhang2012] is used. However, it is only implemented for nitrogen and not tested. It is not recommended for use.
+If the relaxation probability is equal to 3, the relaxation model of Zhang et al. {cite}`Zhang2012` is used. However, it is only implemented for nitrogen and not tested. It is not recommended for use.
 
 #### Vibrational Relaxation
 
@@ -213,7 +162,7 @@ Analogous to the rotational relaxation probability, the vibrational relaxation p
     Particles-DSMC-VibRelaxProb = 0.004 ! Value between 0 and 1 as a constant probability
                                       2 ! Model by Boyd
 
-If `VibRelaxProb` is between 0 and 1, it is used as a constant vibrational relaxation probability (default = 0.004). The variable vibrational relaxation model of Boyd [@Boyd1990b] can be activated with `VibRelaxProb = 2`. For each molecular species pair, the constants A and B according to Millikan and White [@MillikanWhite1963] (which will be used for the calculation of the characteristic velocity and vibrational collision number according to Abe [@Abe1994]) and the vibrational cross section have to be defined. The given example below is a 2 species mixture of nitrogen and oxygen, using the values for A and B given by Farbar [@Farbar2010] and the vibrational cross section given by Boyd [@Boyd1990b]:
+If `VibRelaxProb` is between 0 and 1, it is used as a constant vibrational relaxation probability (default = 0.004). The variable vibrational relaxation model of Boyd {cite}`Boyd1990b` can be activated with `VibRelaxProb = 2`. For each molecular species pair, the constants A and B according to Millikan and White {cite}`MillikanWhite1963` (which will be used for the calculation of the characteristic velocity and vibrational collision number according to Abe {cite}`Abe1994`) and the vibrational cross section have to be defined. The given example below is a 2 species mixture of nitrogen and oxygen, using the values for A and B given by Farbar {cite}`Farbar2010` and the vibrational cross section given by Boyd {cite}`Boyd1990b`:
 
     Part-Species1-MWConstA-1-1 = 220.00
     Part-Species1-MWConstA-1-2 = 115.10
@@ -227,7 +176,7 @@ If `VibRelaxProb` is between 0 and 1, it is used as a constant vibrational relax
     Part-Species2-MWConstB-2-1 = -6.92
     Part-Species2-VibCrossSection = 1e-19
 
-It is not possible to calculate an instantaneous vibrational relaxation probability with this model [@Boyd1992]. Thus, the probability is calculated for every collision and is averaged. To avoid large errors in cells containing only a few particles, a relaxation of this average probability is implemented. The relaxation factor $\alpha$ can be changed with the following parameter in the ini file:
+It is not possible to calculate an instantaneous vibrational relaxation probability with this model {cite}`Boyd1992`. Thus, the probability is calculated for every collision and is averaged. To avoid large errors in cells containing only a few particles, a relaxation of this average probability is implemented. The relaxation factor $\alpha$ can be changed with the following parameter in the ini file:
 
     Particles-DSMC-alpha = 0.99
 
@@ -239,7 +188,7 @@ This model is extended to more species by calculating a separate probability for
 
 #### Electronic Relaxation
 
-For the modelling of electronic relaxation, two models are available: the model by Liechty et al. [@Liechty2011a], where each particle has a specific electronic state and the model by Burt and Eswar [@Burt2015b], where each particle has an electronic distribution function attached. Both models utilize tabulated energy levels, which can be found in literature for a wide range of species (e.g. for monatomic [@NISTASD], diatomic [@Huber1979], polyatomic [@Herzberg1966] molecules). An example database `DSMCSpecies_electronic_state_full_Data.h5` can be found in e.g. `piclas/regressioncheck/checks/NIG_Reservoir/CHEM_EQUI_TCE_Air_5Spec`, where the energy levels are stored in containers and accessed via the species name, e.g. `Part-Species1-SpeciesName=N2`. Each level is described by its degeneracy in the first column and by the energy in [J] in the seconed column. To include electronic excitation in the simulation, the following parameters are required
+For the modelling of electronic relaxation, two models are available: the model by Liechty et al. {cite}`Liechty2011a`, where each particle has a specific electronic state and the model by Burt and Eswar {cite}`Burt2015b`, where each particle has an electronic distribution function attached. Both models utilize tabulated energy levels, which can be found in literature for a wide range of species (e.g. for monatomic {cite}`NISTASD`, diatomic {cite}`Huber1979`, polyatomic {cite}`Herzberg1966` molecules). An example database `DSMCSpecies_electronic_state_full_Data.h5` can be found in e.g. `piclas/regressioncheck/checks/NIG_Reservoir/CHEM_EQUI_TCE_Air_5Spec`, where the energy levels are stored in containers and accessed via the species name, e.g. `Part-Species1-SpeciesName=N2`. Each level is described by its degeneracy in the first column and by the energy in [J] in the seconed column. To include electronic excitation in the simulation, the following parameters are required
 
     Particles-DSMC-ElectronicModel  = 0     ! No electronic energy is considered (default)
                                     = 1     ! Model by Liechty
@@ -299,7 +248,7 @@ The reactants (left-hand side) and products (right-hand side) are defined by the
 This allows to define a single reaction for an arbitrary number of collision partners. In the following, three possibilities to model the reaction rates are presented.
 #### Total Collision Energy (TCE)
 
-The Total Collision Energy (TCE) model [@Bird1994] utilizes Arrhenius type reaction rates to reproduce the probabilities for a chemical reaction. The extended Arrhenius equation is
+The Total Collision Energy (TCE) model {cite}`Bird1994` utilizes Arrhenius type reaction rates to reproduce the probabilities for a chemical reaction. The extended Arrhenius equation is
 
 $$k(T) = A T^b e^{-E_\mathrm{a}/T}$$
 
@@ -313,7 +262,7 @@ An example initialization file for a TCE-based chemistry model can be found in t
 
 #### Quantum Kinetic Chemistry (QK)
 
-The Quantum Kinetic (QK) model [@Bird2011] chooses a different approach and models chemical reactions on the microscopic level. Currently, the QK model is only available for ionization and dissociation reactions. It is possible to utilize TCE- and QK-based reactions in the same simulation for different reactions paths for the same collision pair, such as the ionization and dissociation reactions paths (e.g. N$_2$ + e can lead to a dissociation with the TCE model and to an ionization with the QK model). An example setup can be found in the regression tests (e.g. `regressioncheck/checks/NIG_Reservoir/CHEM_QK_multi-ionization_C_to_C6+`).
+The Quantum Kinetic (QK) model {cite}`Bird2011` chooses a different approach and models chemical reactions on the microscopic level. Currently, the QK model is only available for ionization and dissociation reactions. It is possible to utilize TCE- and QK-based reactions in the same simulation for different reactions paths for the same collision pair, such as the ionization and dissociation reactions paths (e.g. N$_2$ + e can lead to a dissociation with the TCE model and to an ionization with the QK model). An example setup can be found in the regression tests (e.g. `regressioncheck/checks/NIG_Reservoir/CHEM_QK_multi-ionization_C_to_C6+`).
 
 Besides the reaction model, reactants and products definition no further parameter are required for the reaction. However, the dissociation energy [eV] has to be defined on a species basis
 
@@ -354,7 +303,7 @@ It should be noted that if the backward reactions are enabled globally, a single
     Part-Species1-CharaTempRot2=2.1
     Part-Species1-CharaTempRot3=2.1
 
-The rotational symmetry factor depends on the symmetry point group of the molecule and can be found in e.g. Table 2 in [@Fernandez-Ramos2007]. While linear polyatomic and diatomic molecules require a single characteristic rotational temperature, three values have to be supplied for non-linear polyatomic molecules. Finally, electronic energy levels have to be supplied to consider the electronic partition function. For this purpose, the user should provide an electronic state database as presented in Section \ref{sec:dsmc_electronic_relaxation}.
+The rotational symmetry factor depends on the symmetry point group of the molecule and can be found in e.g. Table 2 in {cite}`Fernandez-Ramos2007`. While linear polyatomic and diatomic molecules require a single characteristic rotational temperature, three values have to be supplied for non-linear polyatomic molecules. Finally, electronic energy levels have to be supplied to consider the electronic partition function. For this purpose, the user should provide an electronic state database as presented in Section \ref{sec:dsmc_electronic_relaxation}.
 
 ### Additional Features
 #### Deletion of Chemistry Products

@@ -1,6 +1,6 @@
 ## Bhatnagar-Gross-Krook Collision Operator \label{sec:bgk}
 
-The implementation of the BGK-based collision operator is based on the publications by [@Pfeiffer2018a] and [@Pfeiffer2018b]. It allows the simulation of gas flows in the continuum and transitional regime, where the DSMC method is computationally too expensive. The collision integral is hereby approximated by a relaxation process:
+The implementation of the BGK-based collision operator is based on the publications by {cite}`Pfeiffer2018a` and {cite}`Pfeiffer2018b`. It allows the simulation of gas flows in the continuum and transitional regime, where the DSMC method is computationally too expensive. The collision integral is hereby approximated by a relaxation process:
 
 $$ \left.\frac{\partial f}{\partial t}\right|_{\mathrm{coll}} \approx \nu(f^t-f), $$
 
@@ -17,10 +17,10 @@ The current implementation supports:
 
 Relevant publications of the developers:
 
-- Implementation and comparison of the ESBGK, SBGK, and Unified models in PICLas for atomic species [@Pfeiffer2018a]
-- Extension of the modelling to diatomic species including quantized vibrational energy treatment, validation of ESBGK with the Mach 20 hypersonic flow measurements of the heat flux on a $70^\circ$ cone [@Pfeiffer2018b]
-- Simulation of a nozzle expansion (including the pressure chamber) with ESBGK, SBGK and coupled ESBGK-DSMC, comparison to experimental measurements [@Pfeiffer2019a],[@Pfeiffer2019b]
-- Extension to polyatomic molecules, simulation of the carbon dioxide hypersonic flow around a flat-faced cylinder, comparison of ESBGK, SBGK and DSMC regarding the shock structure and heat flux [@Pfeiffer2019c]
+- Implementation and comparison of the ESBGK, SBGK, and Unified models in PICLas for atomic species {cite}`Pfeiffer2018a`
+- Extension of the modelling to diatomic species including quantized vibrational energy treatment, validation of ESBGK with the Mach 20 hypersonic flow measurements of the heat flux on a $70^\circ$ cone {cite}`Pfeiffer2018b`
+- Simulation of a nozzle expansion (including the pressure chamber) with ESBGK, SBGK and coupled ESBGK-DSMC, comparison to experimental measurements {cite}`Pfeiffer2019a`,{cite}`Pfeiffer2019b`
+- Extension to polyatomic molecules, simulation of the carbon dioxide hypersonic flow around a flat-faced cylinder, comparison of ESBGK, SBGK and DSMC regarding the shock structure and heat flux {cite}`Pfeiffer2019c`
 - Implemention of Brull's multi-species modelling using Wilke's mixture rules and collision integrals for the calculation of transport coefficients (under review)
 
 To enable the simulation with the BGK module, the respective compiler setting has to be activated:

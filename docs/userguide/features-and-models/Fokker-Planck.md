@@ -1,7 +1,7 @@
 
 ## Fokker-Planck Collision Operator \label{sec:fpflow}
 
-The implementation of the FP-based collision operator is based on the publications by [@Gorji2014] and [@Pfeiffer2017]. It is a method, which allows the simulation of gas flows in the continuum and transitional regime, where the DSMC method is computationally too expensive. The collision integral is hereby approximated by a drift and diffusion process
+The implementation of the FP-based collision operator is based on the publications by {cite}`Gorji2014` and {cite}`Pfeiffer2017`. It is a method, which allows the simulation of gas flows in the continuum and transitional regime, where the DSMC method is computationally too expensive. The collision integral is hereby approximated by a drift and diffusion process
 
 $$  \left.\frac{\partial f}{\partial t}\right|_{\mathrm{coll}}\approx-\sum_{i=1}^3 {\frac{\partial }{\partial v_i}(A_i f)+\frac{1}{2}\sum_{i=1}^3 \sum_{j=1}^3\frac{\partial ^2 }{\partial v_i\partial v_j}(D_{ij}f)}, $$
 
@@ -17,9 +17,9 @@ The current implementation supports:
 
 Relevant publications of the developers:
 
-- Implementation of the cubic Fokker-Planck in PICLas [@Pfeiffer2017]
-- Comparison of the cubic and ellipsoidal statistical Fokker-Planck [@Jun2019]
-- Simulation of a nozzle expansion (including the pressure chamber) with ESBGK, ESFP and coupled ESBGK-DSMC, comparison to experimental measurements [@Pfeiffer2019a]
+- Implementation of the cubic Fokker-Planck in PICLas {cite}`Pfeiffer2017`
+- Comparison of the cubic and ellipsoidal statistical Fokker-Planck {cite}`Jun2019`
+- Simulation of a nozzle expansion (including the pressure chamber) with ESBGK, ESFP and coupled ESBGK-DSMC, comparison to experimental measurements {cite}`Pfeiffer2019a`
 
 To enable the simulation with the FP module, the respective compiler setting has to be activated:
 

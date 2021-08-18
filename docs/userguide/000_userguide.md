@@ -41,26 +41,26 @@
  * Arbitrary order nodal polynomial tensor product basis using Gauss or Gauss Lobatto collocation 
    points for electrostatic and electromagnetic solvers
  * Matching high order curved mesh generation from external mesh formats (CGNS, GMSH) or 
-   simple analytic blocks via the open source preprocessor [**HOPR**](http://hopr-project.org) [@Hindenlang2015]
- * Non-conforming interfaces [@Sonntag2017] based on the mortar approach [@Kopriva2001;@Bui2012] (electromagnetic solver)
- * Non-reflecting boundary conditions via CFS-PMLs [@Copplestone2017] (electromagnetic solver)
+   simple analytic blocks via the open source preprocessor [HOPR](http://hopr-project.org) {cite}`Hindenlang2015`
+ * Non-conforming interfaces {cite}`Sonntag2017` based on the mortar approach {cite}`Kopriva2001,Bui2012` (electromagnetic solver)
+ * Non-reflecting boundary conditions via CFS-PMLs {cite}`Copplestone2017` (electromagnetic solver)
  * Automatic domain decomposition for parallel simulations based on a space filling curve
- * High order low-storage explicit Runge-Kutta time integration [@Carpenter1994]
- * I/O using the [**HDF5**](https://www.hdfgroup.org/solutions/hdf5/) library optimized for massively parallel jobs
+ * High order low-storage explicit Runge-Kutta time integration {cite}`Carpenter1994`
+ * I/O using the [HDF5](https://www.hdfgroup.org/solutions/hdf5/) library optimized for massively parallel jobs
 
 ## How this documentation is organized
 
 This user guide is organized to both guide the first steps as well as provide a complete overview of 
 the simulation code's features from a user and a developer point of view.
 
-* Chapter \ref{chap:installation} contains step by step instructions from obtaining the source 
+* Section {ref}`010_installation:Installation` contains step by step instructions from obtaining the source 
   code up to running a first simulation and visualizing the simulation results. In addition, it 
   provides an overview of the whole simulation framework and the currently implemented features.
-* Chapter \ref{chap:workflow} outlines the workflow starting with mesh generation and concluding with the visualization of results produced with **PICLas**.
-* Chapter \ref{chap:features_models} shall serve as a reference for the models and features implemented in **PICLas**.
-* Chapter \ref{chap:visu_output} presents the options and parameters for the output of particle data, field and flow variables.
-* Chapter \ref{chap:tools} lists tools within the **PICLas** repository, including the post-processing tools.
-* Simulation tutorials are contained in Chapter \ref{chap:tutorials}.
-* Cluster-specific user guidelines are given in Chapter \ref{chap:cluster_guide}.
-<!-- * A complete list of all parameters is given in Chapter \ref{chap:parameterfile}. -->
-<!-- * The unit test system used to test key routines with CTest is described in Chapter \ref{chap:unittest}. -->
+* Section {ref}`020_workflow:Workflow` outlines the workflow starting with mesh generation and concluding with the visualization of results produced with **PICLas**.
+* Section {ref}`features-and-models/index:Features & Models` shall serve as a reference for the models and features implemented in **PICLas**.
+* Section {ref}`040_visu_output:Visualization & Output` presents the options and parameters for the output of particle data, field and flow variables.
+* Section {ref}`050_tools:Tools Overview` lists tools within the **PICLas** repository, including the post-processing tools.
+* Simulation tutorials are contained in Section {ref}`tutorials/index:Tutorials`.
+* Cluster-specific user guidelines are given in Section {ref}`080_cluster_guide:Cluster Guidelines`.
+<!-- * A complete list of all parameters is given in Section \ref{chap:parameterfile}. -->
+<!-- * The unit test system used to test key routines with CTest is described in Section \ref{chap:unittest}. -->
