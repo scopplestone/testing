@@ -1,4 +1,4 @@
-## Particle-In-Cell \label{sec:pic}
+## Particle-In-Cell
 
 ### Charge and Current Deposition
 

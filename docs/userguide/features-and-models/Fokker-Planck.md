@@ -1,5 +1,5 @@
 
-## Fokker-Planck Collision Operator \label{sec:fpflow}
+## Fokker-Planck Collision Operator
 
 The implementation of the FP-based collision operator is based on the publications by {cite}`Gorji2014` and {cite}`Pfeiffer2017`. It is a method, which allows the simulation of gas flows in the continuum and transitional regime, where the DSMC method is computationally too expensive. The collision integral is hereby approximated by a drift and diffusion process
 

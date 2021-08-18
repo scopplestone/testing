@@ -1,16 +1,28 @@
 # Installation
 
-The following chapter describes the installation procedure on a Linux machine requiring root access. This includes the installation of required prerequisites, setting up MPI and HDF5. Please note that high-performance clusters usually have a module environment, where you have to load the appropriate modules instead of compiling them yourself. The module configuration for some of the clusters used by the research group are given in Chapter \ref{chap:cluster_guide}. In that case, you can jump directly to the description of the download and installation procedure of PICLas in Section {sec:download_source}.
+The following chapter describes the installation procedure on a Linux machine requiring root access. This includes the installation
+of required prerequisites, setting up MPI and HDF5. Please note that high-performance clusters usually have a module environment,
+where you have to load the appropriate modules instead of compiling them yourself. The module configuration for some of the clusters
+used by the research group are given in Chapter \ref{chap:cluster_guide}. In that case, you can jump directly to the description of
+the download and installation procedure of PICLas in Section {sec:download_source}.
 
 ## Prerequisites
-**PICLas** has been tested on various Linux distributions. This includes Ubuntu 14.04 LTS, 16.04 LTS and 18.04 LTS, 20.04 LTS and 20.10, OpenSUSE 42.1 and CentOS 7.
-For **tested combinations** of prerequisites (HDF5, OpenMPI, CMake etc.) and known problems that may occur, visit Chapter \ref{chap:appendix}.
+**PICLas** has been tested on various Linux distributions. This includes Ubuntu 14.04 LTS, 16.04 LTS and 18.04 LTS, 20.04 LTS and
+20.10, OpenSUSE 42.1 and CentOS 7.
+For **tested combinations** of prerequisites (HDF5, OpenMPI, CMake etc.) and known problems that may occur, visit Chapter
+\ref{chap:appendix}.
 
-The suggested packages in this section can be replaced by self compiled versions. The required packages for the Ubuntu Linux distributions are listed in Table \ref{tab:installation_prereqs_ubuntu}.
+The suggested packages in this section can be replaced by self compiled versions. The required packages for the Ubuntu Linux
+distributions are listed in {numref}`tab:installation_prereqs_ubuntu` and for Centos Linux in
+{numref}`tab:installation_prereqs_centos`.
 Under Ubuntu, they can be obtained using the apt environment:
 
     sudo apt-get install git
 
+```{table} Debian/Ubuntu packages. x: required, o: optional, -: not available
+---
+name: tab:installation_prereqs_ubuntu
+---
 |      Package     | Ubuntu 14.04 | Ubuntu 16.04 | Ubuntu 18.04 | Ubuntu 20.04 |
 | :--------------: | :----------: | :----------: | :----------: | :----------: |
 |        git       |       x      |       x      |       x      |       x      |
@@ -23,9 +35,7 @@ Under Ubuntu, they can be obtained using the apt environment:
 |  mpi-default-dev |       x      |       x      |       x      |       x      |
 |    zlib1g-dev    |       -      |       x      |       x      |       x      |
 |  exuberant-ctags |       o      |       o      |       o      |       o      |
-
-Table: Debian/Ubuntu packages.\label{tab:installation_prereqs_ubuntu}
-x: required, o: optional, -: not available
+```
 
 and under CentOS via
 
@@ -35,6 +45,10 @@ For extra packages install EPEL and SCL
 
     sudo yum install epel-release centos-release-scl
 
+```{table} Centos packages. x: required, o: optional, -: not available
+---
+name: tab:installation_prereqs_centos
+---
 |      Package     |   CentOS 7   |
 | :--------------: | :----------: |
 |        git       |       x      |
@@ -52,11 +66,10 @@ For extra packages install EPEL and SCL
 |  exuberant-ctags |       o      |
 |   numactl-devel  |       x      |
 |  rdma-core-devel |       o      |
+```
 
-Table: Centos packages.\label{tab:installation_prereqs_ubuntu}
-x: required, o: optional, -: not available
-
-On some systems it may be necessary to increase the size of the stack (part of the memory used to store information about active subroutines) in order to execute **PICLas** correctly. This is done using the command
+On some systems it may be necessary to increase the size of the stack (part of the memory used to store information about active
+subroutines) in order to execute **PICLas** correctly. This is done using the command
 
     ulimit -s unlimited
 
@@ -74,7 +87,8 @@ Additional packages are required starting at specific versions of the GCC compil
 
 ### Installing/setting up OpenMPI
 
-PICLas requires the installation of MPI with properly setup environment variables for parallel computations. The recommended MPI version to use with PICLas is *OpenMPI 2.1.5*. An example of properly set environment variable are given below
+PICLas requires the installation of MPI with properly setup environment variables for parallel computations. The recommended MPI
+version to use with PICLas is *OpenMPI 2.1.5*. An example of properly set environment variable are given below
 
     export MPI_DIR=/opt/openmpi/2.1.5
     export PATH="/opt/openmpi/2.1.5/bin:$PATH"
@@ -84,9 +98,13 @@ For convenience, you can add these lines to your `.bashrc`.
 
 ### Installing/setting up HDF5
 
-An available installation of HDF5 can be utilized with PICLas. This requires properly setup environment variables and the compilation of HDF5 during the PICLas compilation has to be turned off (`PICLAS_BUILD_HDF5 = OFF`). If this option is enabled, HDF5 will be downloaded and compiled. However, this means that every time a clean compilation of PICLas is performed, HDF5 will be recompiled. It is preferred to either install HDF5 on your system locally or utilize the packages provided on your cluster.
+An available installation of HDF5 can be utilized with PICLas. This requires properly setup environment variables and the
+compilation of HDF5 during the PICLas compilation has to be turned off (`PICLAS_BUILD_HDF5 = OFF`). If this option is enabled,
+HDF5 will be downloaded and compiled. However, this means that every time a clean compilation of PICLas is performed, HDF5 will
+be recompiled. It is preferred to either install HDF5 on your system locally or utilize the packages provided on your cluster.
 
-The recommended HDF5 version to use with PICLas is **1.10.0-patch1**. In the following a manual installation of HDF5 is described, if HDF5 is already available on your system you can skip to the next Section \ref{sec:hdf5_env}.
+The recommended HDF5 version to use with PICLas is **1.10.0-patch1**. In the following a manual installation of HDF5 is described,
+if HDF5 is already available on your system you can skip to the next Section \ref{sec:hdf5_env}.
 
 #### Manual HDF5 installation
 
@@ -137,7 +155,8 @@ The **PICLas** repository is available at GitHub. To obtain the most recent vers
     wget https://github.com/piclas-framework/piclas/archive/master.tar.gz
     tar xzf master.tar.gz
 
-Note that cloning **PICLas** from GitHub may not be possible on some machines, as e.g. the HLRS at the University of Stuttgart restricts internet access. Please refer to section \ref{sec:cloninghlrs} of this user guide.
+Note that cloning **PICLas** from GitHub may not be possible on some machines, as e.g. the HLRS at the University of Stuttgart
+restricts internet access. Please refer to section \ref{sec:cloninghlrs} of this user guide.
 
 ## Compiling the code
 
@@ -149,15 +168,19 @@ Note that cloning **PICLas** from GitHub may not be possible on some machines, a
     ccmake ..
     make
 
-For a list of all compiler options visit Section \ref{sec:compileroptions}. Finally, the executables **PICLas** and **piclas2vtk** are contained in your **PICLas** directory in `build/bin/`. 
+For a list of all compiler options visit Section \ref{sec:compileroptions}. Finally, the executables **PICLas** and **piclas2vtk**
+are contained in your **PICLas** directory in `build/bin/`. 
 
 ### Directory paths
 
-In the following, we write `$PICLASROOT` as a substitute for the path to the **PICLas** repository. Please replace `$PICLASROOT` in all following commands with the path to your **PICLas** repository *or* add an environment variable `$PICLASROOT`. 
+In the following, we write `$PICLASROOT` as a substitute for the path to the **PICLas** repository. Please replace `$PICLASROOT`
+in all following commands with the path to your **PICLas** repository *or* add an environment variable `$PICLASROOT`. 
 
-Furthermore, the path to executables is omitted in the following, so for example, we write `piclas` instead of `$PICLASROOT/build/bin/piclas`. 
+Furthermore, the path to executables is omitted in the following, so for example, we write `piclas` instead of
+`$PICLASROOT/build/bin/piclas`. 
 
-In order to execute a file, you have to enter the full path to it in the terminal. There are two different ways to enable typing `piclas` instead of the whole path (do not use both at the same time!)
+In order to execute a file, you have to enter the full path to it in the terminal. There are two different ways to enable typing 
+`piclas` instead of the whole path (do not use both at the same time!)
 
 1. You can add an alias for the path to your executable. Add a command of the form
 

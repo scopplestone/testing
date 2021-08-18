@@ -72,7 +72,6 @@ html_static_path = ['_static']
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-#
 html_logo = '../logo.png'
 
 # -- Bibliography ------------------------------------------------------------
@@ -82,3 +81,6 @@ bibtex_bibfiles = ['../references.bib']
 # -- Section labelling -------------------------------------------------------
 # Make sure the target is unique
 autosectionlabel_prefix_document = True
+
+# Activate using: {numref}`tab:some-name` -> Table 1
+numfig = True

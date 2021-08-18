@@ -1,4 +1,4 @@
-## Magnetic Background Field (superB) \label{sec:superB}
+## Magnetic Background Field (superB)
 
 Certain application cases allow the utilization of a constant magnetic background field. The magnetic field resulting from certain types of coils and permanent magnets can be calculated during the initialization within PICLas or with the standalone tool **superB** (see Section \ref{sec:compileroptions} for compilation), which can be used to solely create a .h5 file that contains the B-field data via
 

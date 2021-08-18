@@ -60,7 +60,7 @@ Besides DSMC, the linear scaling is available for the BGK and FP method. Finally
 
 For one-dimensional (e.g. shock-tubes), two-dimensional (e.g. cylinder) and axisymmetric (e.g. re-entry capsules) cases, the computational effort can be greatly reduced.
 
-#### 1D Simulations \label{sec:1D}
+#### 1D Simulations
 
 To enable one-dimensional simulations, the symmetry order has to be set
 
@@ -71,7 +71,7 @@ The calculation is performed along the $x$-axis. The $y$ and $z$ dimension shoul
     Part-Boundary5-SourceName=SYM
     Part-Boundary5-Condition=symmetric
 
-#### 2D/Axisymmetric Simulations \label{sec:2DAxi}
+#### 2D/Axisymmetric Simulations
 
 To enable two-dimensional simulations, the symmetry order has to be set
 
