@@ -10,7 +10,7 @@ In that case, you can jump directly to the description of the download and insta
 ## Prerequisites
 **PICLas** has been tested on various Linux distributions. This includes Ubuntu 14.04 LTS, 16.04 LTS and 18.04 LTS, 20.04 LTS
 20.10 and 21.04, OpenSUSE 42.1 and CentOS 7.
-For **tested combinations** of prerequisites (HDF5, OpenMPI, CMake etc.) and known problems that may occur, visit Section
+For **tested combinations** of prerequisites (HDF5, OpenMPI, CMake etc.) and known problems that may occur, visit Chapter
 {ref}`100_appendix:Appendix`.
 
 The suggested packages in this section can be replaced by self compiled versions. The required packages for the Ubuntu Linux
@@ -78,7 +78,7 @@ from the command line. For convenience, you can add this line to your `.bashrc`.
 
 ## Required Libraries
 
-For a list of tested library version combinations, see Section {ref}`100_appendix:Appendix`.
+For a list of tested library version combinations, see Chapter {ref}`100_appendix:Appendix`.
 
 ### Installing/setting up GCC
 
