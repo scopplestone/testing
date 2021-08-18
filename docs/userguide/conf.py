@@ -20,7 +20,7 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = 'PICLas User Guide'
-copyright = '2021, Stephen Copplestone'
+copyright = '2021, PICLas Developers'
 author = 'Institute for Aerodynamics and Gas Dynamics (University of Stuttgart), Institute for Space Systems (University of Stuttgart), boltzplatz - Numerical Plasma Dynamics'
 
 # -- General configuration ---------------------------------------------------
