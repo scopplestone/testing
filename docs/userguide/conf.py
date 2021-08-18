@@ -22,7 +22,7 @@ import sphinx_rtd_theme
 master_doc = 'index'
 project = 'PICLas Testing'
 copyright = '2021, Stephen Copplestone'
-author = 'University of Stuttgart, Institute for Aerodynamics and Gas Dynamics (IAG), Institute for Space Systems (IRS), boltzplatz - Numerical Plasma Dynamics'
+author = 'Institute for Aerodynamics and Gas Dynamics (University of Stuttgart), Institute for Space Systems (University of Stuttgart), boltzplatz - Numerical Plasma Dynamics'
 # latex config
 latex_documents = [
     (master_doc, 'foo.tex', 'Project',
