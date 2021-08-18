@@ -19,9 +19,16 @@ import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
+master_doc = 'index'
 project = 'PICLas Testing'
 copyright = '2021, Stephen Copplestone'
-author = 'Stephen Copplestone'
+author = 'University of Stuttgart, Institute for Aerodynamics and Gas Dynamics (IAG), Institute for Space Systems (IRS), boltzplatz - Numerical Plasma Dynamics'
+# latex config
+latex_documents = [
+    (master_doc, 'foo.tex', 'Project',
+     author.replace(', ', '\\and ').replace(' and ', '\\and and '),
+     'manual'),
+]
 
 
 # -- General configuration ---------------------------------------------------
@@ -62,6 +69,11 @@ html_theme_options = {
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# The name of an image file (relative to this directory) to place at the top
+# of the sidebar.
+#
+html_logo = ../logo.png
 
 # -- Bibliography ------------------------------------------------------------
 

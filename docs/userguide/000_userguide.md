@@ -1,29 +1,3 @@
-% ---
-% title: |
-%   ![](../logo.png){width=15cm}
-%   PICLas v2.2.0
-% subtitle: User Guide
-% author:
-%   - University of Stuttgart, Germany
-%   - Institute for Aerodynamics and Gas Dynamics (IAG)
-%   - Institute for Space Systems (IRS)
-%   - boltzplatz - Numerical Plasma Dynamics
-% institute: IAG IRS
-% date: \today
-% documentclass: scrreprt
-% lang: en-US
-% papersize: a4
-% fontsize: 11pt
-% geometry: "left=2.0cm,right=2.0cm,top=3.5cm,bottom=2.5cm"
-% colorlinks: yes
-% toc: yes
-% header-includes:
-%   - \input{header}
-% bibliography: ../references.bib
-% csl: ../ieee.csl
-% link-citations: true
-% ---
-
 # Introduction
 
  [**PICLas**](https://github.com/piclas-framework/piclas)  is a three-dimensional simulation
@@ -62,5 +36,3 @@ the simulation code's features from a user and a developer point of view.
 * Section {ref}`050_tools:Tools Overview` lists tools within the **PICLas** repository, including the post-processing tools.
 * Simulation tutorials are contained in Section {ref}`tutorials/index:Tutorials`.
 * Cluster-specific user guidelines are given in Section {ref}`080_cluster_guide:Cluster Guidelines`.
-<!-- * A complete list of all parameters is given in Section \ref{chap:parameterfile}. -->
-<!-- * The unit test system used to test key routines with CTest is described in Section \ref{chap:unittest}. -->

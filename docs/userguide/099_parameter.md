@@ -6,13 +6,13 @@ A ``parameter.ini`` file is needed to control the code. An overview of all optio
 piclas --help
 ~~~~~~~
 
-Generally following types are used:
+Generally, the following types are used:
 
 ~~~~~~~
 INTEGER = 1
 REAL    = 1.23456
-LOGICAL = T         ! True
-LOGICAL =           ! False
+LOGICAL = T ! True
+LOGICAL = F ! False
 STRING  = PICLAS
 VECTOR  = (/1.0,2.0,3.0/)
 ~~~~~~~
@@ -23,25 +23,25 @@ The concept of the parameter file is described as followed:
 * the examination is case-insensitive
 * comments can be set with symbol "!" in front of the text
 
-~~~~~~~ {.Fortran}
-! commented text
-~~~~~~~
+    ```{code-block} fortran
+    ! commented text
+    ```
 
 * numbers can also be set by using "pi"
 
-~~~~~~~
-vector = (/1,2Pi,3Pi/)
-~~~~~~~
+    ~~~~~~~
+    vector = (/1,2Pi,3Pi/)
+    ~~~~~~~
 
 * the order of defined variables is with one exception generally indifferent, but it is preferable to group similar variables
 * the order becomes important only by modifying boundary conditions, if you want to modify a specific boundary by addressing its name, the related boundary type has to be defined
 
-~~~~~~~
-BoundaryName=inflow         ! BC_Name defined in mesh file
-BoundaryType=(/2,0,0,0/)
-BoundaryName=outflow        ! BC_Name defined in mesh file
-BoundaryType=(/2,0,0,0/)
-~~~~~~~
+    ~~~~~~~
+    BoundaryName=inflow         ! BC_Name defined in mesh file
+    BoundaryType=(/2,0,0,0/)
+    BoundaryName=outflow        ! BC_Name defined in mesh file
+    BoundaryType=(/2,0,0,0/)
+    ~~~~~~~
 
 The following tables describe the main configuration options which can used in the parameter file.
 
