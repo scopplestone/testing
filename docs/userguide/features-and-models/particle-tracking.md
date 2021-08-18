@@ -1,5 +1,4 @@
-
-## Particle Tracking
+# Particle Tracking
 
 Three different particle tracking methods are implemented in PICLas and are selected via
 
@@ -30,7 +29,7 @@ Following options are available to get more information about the tracking, e.g.
 
 The two alternative tracking routines and their options are described in the following.
 
-### DoRefMapping
+## DoRefMapping
 
     TrackingMethod = refmapping
 
@@ -53,7 +52,7 @@ for Cartesian meshes. The particle position is used for periodic displacements.
 |                   |        |  can be several times the mesh size in this direction.  |
 
 
-### Tracing
+## Tracing
 
     TrackingMethod = tracing
 
@@ -66,7 +65,7 @@ the edges of element faces) an additional safety check is performed by recomputi
 the particle is required. Particles traveling parallel to element faces are in an undefined state and are currently removed from the computation.
 This leads to a warning message.
 
-### Parameters for DoRefMapping and Tracing  (NEEDS UPDATING)
+## Parameters for DoRefMapping and Tracing  (NEEDS UPDATING)
 
 Following parameters can be used for both schemes.
 

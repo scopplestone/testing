@@ -77,7 +77,7 @@ first periodic vector that is defined via `VV=(/6.2831 , 0.  , 0./)` that handle
 orientation on the boundary for the vector. Note that each periodic boundary must have one positive and one negative corresponding
 boundary for the same periodic vector.
 
-```{figure} mesh/pic.jpg
+```{figure} mesh/mesh.jpg
 ---
 name: fig:plasma-wave-mesh
 ---
@@ -90,7 +90,7 @@ Mesh with $60\times1\times1$ elements and a size of [$2\pi\times0.2\times0.2$] m
 Install **piclas** by compiling the source code as described in Chapter {ref}`010_installation:Installation` and make sure to set
 the correct compile flags
 
-    PICLAS_EQNSYSNAME = poisson
+    PICLAS_EQNSYSNAME     = poisson
     PICLAS_TIMEDISCMETHOD = RK3
 
 or simply run the following command from inside the *build* directory
@@ -407,7 +407,7 @@ The electric potential field can be viewed, e.g., by opening `plasma_wave_Soluti
 `Phi`, which should look like the following
 
 
-```{figure} results/pic.jpg
+```{figure} results/results.jpg
 ---
 name: fig:plasma-wave-results
 ---
