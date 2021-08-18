@@ -22,8 +22,8 @@ To create the .h5 mesh file, simply run
 
     hopr hopr.ini
 
-This creates the mesh file *plasma_wave_mesh.h5* in HDF5 format. Alternatively, if you do not want to run **hopr** yourself,
-you can also use the provided mesh.
+This creates the mesh file *plasma_wave_mesh.h5* in HDF5 format and is depicted in {numref}`fig:plasma-wave-mesh`.
+Alternatively, if you do not want to run **hopr** yourself, you can also use the provided mesh.
 
 The size of the simulation domain is set to [$2\pi\times0.2\times0.2$] m$^{3}$ and is defined by the single block information
 in the line, where each node of the hexahedral element is defined
@@ -77,7 +77,13 @@ first periodic vector that is defined via `VV=(/6.2831 , 0.  , 0./)` that handle
 orientation on the boundary for the vector. Note that each periodic boundary must have one positive and one negative corresponding
 boundary for the same periodic vector.
 
-![Mesh with $60\times1\times1$ elements and a size of [$2\pi\times0.2\times0.2$] m$^{3}$.\label{fig:pic_poisson_plasma_wave}](mesh/pic.pdf)
+```{figure} mesh/pic.jpg
+---
+name: fig:plasma-wave-mesh
+---
+
+Mesh with $60\times1\times1$ elements and a size of [$2\pi\times0.2\times0.2$] m$^{3}$.
+```
 
 ## PIC Simulation with PICLas
 
@@ -401,9 +407,13 @@ The electric potential field can be viewed, e.g., by opening `plasma_wave_Soluti
 `Phi`, which should look like the following
 
 
-![Electric potential and field strength for the plasma wave test case.](results/pic.pdf)
-![Electric potential and field strength for the plasma wave test case.](results/pic.jpg)
-<!--![Electric potential and field strength for the plasma wave test case.](results/pic.png)-->
+```{figure} results/pic.jpg
+---
+name: fig:plasma-wave-results
+---
+
+Resulting electric potential and field.
+```
 
 
 
