@@ -1,5 +1,8 @@
 # Cluster Guidelines
 
+PICLas has been tested on numerous different Linux- and CPU-based clusters and is continuously been developed to run efficiently on
+high-performance systems.
+
 ## Simulating at HLRS
 
 Unfortunately, the GitHub and GitLab servers are not available on machines at the HLRS, such as the Hawk, due to 
@@ -148,7 +151,7 @@ For building with *CMake* on the bwUniCluster cluster, the following modules (In
 
 During the configuration of PICLas with CMake, the option to build the HDF5 module has to be activated
 
-    PICLAS_BUILD_HDF5 = ON
+    LIBS_BUILD_HDF5 = ON
 
 More information about the cluster and the batch system can be found at the [bwUniCluster wiki](https://www.scc.kit.edu/dienste/bwUniCluster.php).
 

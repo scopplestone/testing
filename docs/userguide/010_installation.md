@@ -3,14 +3,14 @@
 The following chapter describes the installation procedure on a Linux machine requiring root access. This includes the installation
 of required prerequisites, setting up MPI and HDF5. Please note that high-performance clusters usually have a module environment,
 where you have to load the appropriate modules instead of compiling them yourself. The module configuration for some of the clusters
-used by the research group are given in Chapter \ref{chap:cluster_guide}. In that case, you can jump directly to the description of
-the download and installation procedure of PICLas in Section {sec:download_source}.
+used by the research group are given in Chapter {ref}`080_cluster_guide:Cluster Guidelines`.
+In that case, you can jump directly to the description of the download and installation procedure of PICLas in Section {sec:download_source}.
 
 ## Prerequisites
-**PICLas** has been tested on various Linux distributions. This includes Ubuntu 14.04 LTS, 16.04 LTS and 18.04 LTS, 20.04 LTS and
-20.10, OpenSUSE 42.1 and CentOS 7.
-For **tested combinations** of prerequisites (HDF5, OpenMPI, CMake etc.) and known problems that may occur, visit Chapter
-\ref{chap:appendix}.
+**PICLas** has been tested on various Linux distributions. This includes Ubuntu 14.04 LTS, 16.04 LTS and 18.04 LTS, 20.04 LTS
+20.10 and 21.04, OpenSUSE 42.1 and CentOS 7.
+For **tested combinations** of prerequisites (HDF5, OpenMPI, CMake etc.) and known problems that may occur, visit Section
+{ref}`100_appendix:Appendix`.
 
 The suggested packages in this section can be replaced by self compiled versions. The required packages for the Ubuntu Linux
 distributions are listed in {numref}`tab:installation_prereqs_ubuntu` and for Centos Linux in
@@ -75,6 +75,10 @@ subroutines) in order to execute **PICLas** correctly. This is done using the co
 
 from the command line. For convenience, you can add this line to your `.bashrc`.
 
+## Required Libraries
+
+For a list of tested library version combinations, see Section {ref}`100_appendix:Appendix`.
+
 ### Installing/setting up GCC
 
 Additional packages are required starting at specific versions of the GCC compiler suite.
@@ -99,12 +103,12 @@ For convenience, you can add these lines to your `.bashrc`.
 ### Installing/setting up HDF5
 
 An available installation of HDF5 can be utilized with PICLas. This requires properly setup environment variables and the
-compilation of HDF5 during the PICLas compilation has to be turned off (`PICLAS_BUILD_HDF5 = OFF`). If this option is enabled,
+compilation of HDF5 during the PICLas compilation has to be turned off (`LIBS_BUILD_HDF5 = OFF`). If this option is enabled,
 HDF5 will be downloaded and compiled. However, this means that every time a clean compilation of PICLas is performed, HDF5 will
 be recompiled. It is preferred to either install HDF5 on your system locally or utilize the packages provided on your cluster.
 
 The recommended HDF5 version to use with PICLas is **1.10.0-patch1**. In the following a manual installation of HDF5 is described,
-if HDF5 is already available on your system you can skip to the next Section \ref{sec:hdf5_env}.
+if HDF5 is already available on your system you can skip to the next section {ref}`sec:setting-env-vars`.
 
 #### Manual HDF5 installation
 
@@ -124,6 +128,7 @@ Make and install (if you chosen a folder required root access)
 
     make && make install
 
+(sec:setting-env-vars)=
 #### Setting environment variables
 
 Depending whether HDF5 was installed using *configure* or *CMake*, different settings for the HDF5_DIR variable are required
@@ -168,18 +173,18 @@ restricts internet access. Please refer to section \ref{sec:cloninghlrs} of this
     ccmake ..
     make
 
-For a list of all compiler options visit Section \ref{sec:compileroptions}. Finally, the executables **PICLas** and **piclas2vtk**
-are contained in your **PICLas** directory in `build/bin/`. 
+For a list of all compiler options visit Section {ref}`sec:compiler-options`. Finally, the executables **PICLas** and **piclas2vtk**
+are contained in your **PICLas** directory in `build/bin/`.
 
 ### Directory paths
 
 In the following, we write `$PICLASROOT` as a substitute for the path to the **PICLas** repository. Please replace `$PICLASROOT`
-in all following commands with the path to your **PICLas** repository *or* add an environment variable `$PICLASROOT`. 
+in all following commands with the path to your **PICLas** repository *or* add an environment variable `$PICLASROOT`.
 
 Furthermore, the path to executables is omitted in the following, so for example, we write `piclas` instead of
-`$PICLASROOT/build/bin/piclas`. 
+`$PICLASROOT/build/bin/piclas`.
 
-In order to execute a file, you have to enter the full path to it in the terminal. There are two different ways to enable typing 
+In order to execute a file, you have to enter the full path to it in the terminal. There are two different ways to enable typing
 `piclas` instead of the whole path (do not use both at the same time!)
 
 1. You can add an alias for the path to your executable. Add a command of the form

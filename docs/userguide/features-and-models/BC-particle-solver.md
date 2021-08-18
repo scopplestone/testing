@@ -1,5 +1,4 @@
-
-## Boundary Conditions - Particle Solver
+# Boundary Conditions - Particle Solver
 
 Within the parameter file it is possible to define different particle boundary conditions. The number of boundaries is defined by
 
@@ -24,7 +23,7 @@ is used for heterogeneous reactions (reactions have reactants in two or more pha
 
 For `rot_periodic` exactly two corresponding boundaries must be defined. Every particle crossing one of these boundaries will be inserted at the corresponding other boundary that is rotationally shifted.
 
-### Diffuse Wall
+## Diffuse Wall
 
 Gas-surface interaction can be modelled with the extended Maxwellian model {cite}`Padilla2009`, using accommodation coefficients of the form
 
@@ -41,7 +40,7 @@ where $i$, $r$ and $w$ denote the incident, reflected and wall energy, respectiv
     Part-Boundary2-RotACC=1.
     Part-Boundary2-ElecACC=1.
 
-#### Wall movement (Linear & rotational)
+### Wall movement (Linear & rotational)
 
 Additionally, a linear wall velocity [m/s] can be given
 
@@ -54,7 +53,7 @@ In the case of rotating walls the `-RotVelo` flag, a rotation frequency [Hz], a 
     Part-Boundary2-RotOrg = (/0.,0.,0./)
     Part-Boundary2-RotAxi = (/0.,0.,1./)
 
-#### Linear temperature gradient
+### Linear temperature gradient
 
 A linear temperature gradient across a boundary can be defined by supplying a second wall temperature and the start and end vector
 
@@ -64,7 +63,7 @@ A linear temperature gradient across a boundary can be defined by supplying a se
 
 Between these two points the temperature will be interpolated, where the start vector corresponds to the first wall temperature, whereas the end vector to the second wall temperature. Beyond these position values, the first and second temperature will be used as the constant wall temperature, respectively.
 
-#### Radiative equilibrium
+### Radiative equilibrium
 
 Another option is to adapt the wall temperature based on the heat flux assuming that the wall is in radiative equilibrium. The temperature is then calculated from
 
@@ -78,7 +77,7 @@ where $\varepsilon$ is the radiative emissivity of the wall (default = 1) and $\
 
 If provided, the wall temperature will be adapted during the next output of macroscopic variables, where the heat flux calculated during the preceding sampling period is utilized to determine the side-local temperature. The temperature is included in the `State` file and thus available during a restart of the simulation. The surface output (in `DSMCSurfState`) will additionally include the temperature distribution in the `Wall_Temperature` variable (see Section \ref{sec:visu_flowfield}). To continue the simulation without further adapting the temperature, the first flag has to be disabled (`Part-AdaptWallTemp = F`). It should be noted that the the adaptation should be performed multiple times to achieve a converged temperature distribution.
 
-### Rotational Periodicity
+## Rotational Periodicity
 
 The rotational periodic boundary condition can be used in order to reduce the computational effort in case of an existing rotational periodicity. In contrast to symmetric boundary conditions, a macroscopic flow velocity in azimuthal direction can be simulated (e.g. circular flow around a rotating cylinder). Exactly two corresponding boundaries must be defined by setting `rot_periodic` as BC condition and the rotation direction for each BCs.
 
@@ -98,7 +97,7 @@ The usage of rotational periodic boundary conditions is limited to cases, where 
 
     Part-RotPeriodicAngle=90
 
-### Porous Wall / Pump
+## Porous Wall / Pump
 
 The porous boundary condition uses a removal probability to determine whether a particle is deleted or reflected at the boundary. The main application of the implemented condition is to model a pump, according to {cite}`Lei2017`. It is defined by giving the number of porous boundaries and the respective boundary number (`BC=2` corresponds to the `BC_WALL` boundary defined in the previous section) on which the porous condition is.
 
@@ -149,7 +148,7 @@ Using the regions, multiple pumps can be defined on a single boundary. Additiona
 
 Together with a region definition, a pump as well as a sensor can be defined on a single and/or multiple boundaries, allowing e.g. to determine the pressure difference between the pump and a remote area of interest.
 
-### Surface Chemistry
+## Surface Chemistry
 
 Modelling of reactive surfaces is enabled by setting `Part-BoundaryX-Condition=reflective` and an
 appropriate particle boundary surface model `Part-BoundaryX-SurfaceModel`.
@@ -175,7 +174,7 @@ For surface sampling output, where the surface is split into, e.g., $3\times3$ s
 
 where `BezierSampleN=DSMC-nSurfSample`. In this example, sampling is performed over 200 iterations.
 
-### Deposition of Charges on Dielectric Surfaces
+## Deposition of Charges on Dielectric Surfaces
 
 Charged particles can be absorbed (or reflected and leave their charge behind) at dielectric surfaces
 when using the deposition method `cell_volweight_mean`. The boundary can be used by specifying

@@ -1,5 +1,4 @@
-
-## Boundary Conditions - Field Solver
+# Boundary Conditions - Field Solver
 
 Boundary conditions are defined in the mesh creation step in the hopr.ini file and can be modified when running PICLas in the
 corresponding *parameter.ini* file. In the *hopr.ini* file, which is read by the *hopr* executable, a boundary is defined by
@@ -15,7 +14,7 @@ state and periodicity. This can be modified in the *parameter.ini* file, which i
 
 In this case the boundary type is changed from 4 (in the mesh file) to 5 in the simulation.
 
-### Maxwell's Equations
+## Maxwell's Equations
 
 The boundary conditions used for Maxwell's equations are defined by the first integer value in the *BoundaryType* vector and
 include, periodic, Dirichlet, Silver-Mueller, perfectly conducting, symmetry and reference state boundaries as detailed in the following table.
@@ -55,7 +54,7 @@ include, periodic, Dirichlet, Silver-Mueller, perfectly conducting, symmetry and
 
 Dielectric -> type 100?
 
-### Poisson's Equation
+## Poisson's Equation
 
 The boundary conditions used for Maxwell's equations are defined by the first integer value in the *BoundaryType* vector and
 include, periodic, Dirichlet (via pre-defined function, zero-potential or *RefState*), Neumann and reference state boundaries
@@ -112,7 +111,7 @@ amplitude *A*
 
     Phi(t) = (A/2) * (COS(2*pi*f*t + psi) + 1)
 
-#### Zero potential enforcement
+### Zero potential enforcement
 
 It is important to note that when no Dirichlet boundary conditions are selected by the user, the code automatically enforces mixed
 boundaries on either Neumann or periodic boundaries. Depending on the simulation domain, the direction with the largest extent is
@@ -128,7 +127,7 @@ To selected the direction by hand, simply supply the desired direction via
 
 with 1: x-, 2: y-, 3: z-direction.
 
-### Dielectric Materials
+## Dielectric Materials
 
 Dielectric material properties can be considered by defining regions (or specific elements)
 in the computational domain, where permittivity and permeability constants for linear isotropic

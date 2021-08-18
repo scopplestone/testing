@@ -5,9 +5,9 @@
 % ---
 % ```
 
-<!--![alt](../logo.png)-->
-
 # Welcome to PICLas Testing's documentation!
+
+![alt](../logo.png)
 
 ```{toctree}
 ---
@@ -20,12 +20,12 @@ caption: Contents
 features-and-models/index.md
 040_visu_output.md
 050_tools.md
-references.md
 tutorials/index.md
 070_unittest.md
 080_cluster_guide.md
 099_parameter.md
 100_appendix.md
+references.md
 ```
 
 
