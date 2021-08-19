@@ -33,7 +33,7 @@ The output of lost particles in a separate `*_PartStateLost*.h5` file can be ena
 It includes particles lost during the tracking (TrackingMethod = triatracking, tracing) as well as during the restart procedure.
 For the latter, the output includes particles that went missing but were found on other processors.
 
-## Field Variables
+## Field Solver and PIC
 When running a PIC simulation, the particle-grid deposited properties, such as charge and current densities (in each direction `x,
 y,`and `z`) can be written to the state file (`*_State_*.h5`) file at every `Analyze_dt` as well as at the start and end of the
 simulation by enabling
@@ -42,116 +42,7 @@ simulation by enabling
 
 that stores the data in the same format as the solution polynomial of degree $N$, i.e., $(N+1)^{3}$ data points for each cell.
 
-### Time-averaged Field Quantities
-At each `Analyze_dt` and at the end of the simulation, additional time-averaged field properties can be written to `*_TimeAvg_*.h5`
-by enabling 
-
-    CalcTimeAverage = T
-
-where the averaging will take place over the time spanned between two `Analyze_dt` outputs. The time-averaged values and
-fluctuations are selected via `VarNameAvg` and `VarNameFluc`, depending on the equation system that is solved (Poisson or Maxwell).
-These properties are stored in the same format as the solution polynomial of degree $N$, i.e., $(N+1)^{3}$ data points for each cell.
-For Maxwell's equations, the following properties are available
-
-    VarName{Avg,Fluc} = ElectricFieldX
-    VarName{Avg,Fluc} = ElectricFieldY
-    VarName{Avg,Fluc} = ElectricFieldZ
-    VarName{Avg,Fluc} = MagneticFieldX
-    VarName{Avg,Fluc} = MagneticFieldY
-    VarName{Avg,Fluc} = MagneticFieldZ
-    VarName{Avg,Fluc} = Phi
-    VarName{Avg,Fluc} = Psi
-    VarName{Avg,Fluc} = ElectricFieldMagnitude
-    VarName{Avg,Fluc} = MagneticFieldMagnitude
-    VarName{Avg,Fluc} = PoyntingVectorX
-    VarName{Avg,Fluc} = PoyntingVectorY
-    VarName{Avg,Fluc} = PoyntingVectorZ
-    VarName{Avg,Fluc} = PoyntingVectorMagnitude
-
-and for Poisson's equation
-
-    VarName{Avg,Fluc} = Phi
-    VarName{Avg,Fluc} = ElectricFieldX
-    VarName{Avg,Fluc} = ElectricFieldY
-    VarName{Avg,Fluc} = ElectricFieldZ
-    VarName{Avg,Fluc} = ElectricFieldMagnitude
-
-
-
-In case of a PIC simulation, the particle-grid deposited properties (via the user-selected deposition method) are also available via
-`VarNameAvg` and `VarNameFluc`
-
-    VarName{Avg,Fluc} = PowerDensityX-Spec0x
-    VarName{Avg,Fluc} = PowerDensityY-Spec0x
-    VarName{Avg,Fluc} = PowerDensityZ-Spec0x
-    VarName{Avg,Fluc} = PowerDensity-Spec0x
-    VarName{Avg,Fluc} = ChargeDensity-Spec0x
-    VarName{Avg,Fluc} = ChargeDensityX-Spec0x
-    VarName{Avg,Fluc} = ChargeDensityY-Spec0x
-    VarName{Avg,Fluc} = ChargeDensityZ-Spec0x
-    VarName{Avg,Fluc} = ChargeDensity-Spec0x
-
-which must be supplied for each particle species `x` separately.
-
-(sec:sampled-flow-field-and-surface-variables)=
-## Sampled Flow Field and Surface Variables
-
-Flow field and surface outputs are available when the DSMC, BGK and FP methods are utilized (standalone or coupled with PIC) and
-stored in `*_DSMCState_*.h5`. A sampling over a certain number of iterations is performed to calculate the average macroscopic
-values such as number density, bulk velocity and temperature from the microscopic particle information. Two variants are available
-in PICLas, allowing to sample a certain amount of the simulation duration or to sample continuously during the simulation and
-output the result after the given number of iterations.
-
-The first variant is usually utilized to sample at the end of a simulation, when the steady state condition is reached. The first
-parameter `Part-TimeFracForSampling` defines the percentage that shall be sampled relative to the simulation end time $T_\mathrm{end}$
-(Parameter: `TEnd`)
-
-    Part-TimeFracForSampling = 0.1
-    Particles-NumberForDSMCOutputs = 2
-
-`Particles-NumberForDSMCOutputs` defines the number of outputs during the sampling time. Example: The simulation end time is
-$T_\mathrm{end}=1$, thus sampling will begin at $T=0.9$ and the first output will be written at $T=0.95$. At this point the sample
-will NOT be resetted but continued. Therefore, the second and last output at $T=T_\mathrm{end}=1.0$ is not independent of the
-previous result but contains the sample of the complete sampling duration. It should be noted that if a simulation is continued
-at e.g. $T=0.95$, sampling with the given parameters will begin immediately.
-
-The second variant can be used to produce outputs for unsteady simulations, while still to be able to sample for a number of
-iterations (Parameter: `Part-IterationForMacroVal`). The first two flags allow to enable the output of flow field/volume and
-surface values, respectively.
-
-    Part-WriteMacroVolumeValues = T
-    Part-WriteMacroSurfaceValues = T
-    Part-IterationForMacroVal = 100
-
-Example: The simulation end time is $T_\mathrm{end}=1$ with a time step of $\Delta t = 0.001$. With the parameters given above,
-we would sample for 100 iterations up to $T = 0.1$ and get the first output. Afterwards, the sample is deleted and the sampling
-begins anew for the following output at $T=0.2$. This procedure is repeated until the simulation end, resulting in 10 outputs with
-independent samples.
-
-Parameters indicating the quality of the simulation (e.g. the maximal collision probability in case of DSMC) can be enabled by
-
-    Particles-DSMC-CalcQualityFactors = T
-
-Output and sampling on surfaces can be enabled by
-
-    Particles-DSMC-CalcSurfaceVal = T
-
-By default this will include the species-specific impact counter per iteration of simulation particles, the force per area in $x$,
-$y$, and $z$ and the heat flux. The output of the surface-sampled data is written to `*_DSMCSurfState_*.h5`. Additional surface
-values can be sampled by using
-
-    CalcSurfaceImpact = T
-
-which calculates the species-dependent averaged impact energy (trans, rot, vib, elec), impact vector, impact obliqueness angle
-(between particle trajectory and surface normal vector, e.g. an impact vector perpendicular to the surface corresponds to an
-impact angle of $0^{\circ}$), number of real particle impacts over the sampling duration and number of real particle impacts
-per area per second.
-
-## Integral Variables
-
-WIP, PartAnalyze/FieldAnalyze
-
-## Element-constant properties
+### Element-constant properties
 The determined properties are given by a single value within each cell and are NOT sampled over time as opposed to the output
 described in Section {ref}`sec:sampled-flow-field-and-surface-variables`.
 These parameters are only available for PIC simulations, are part of the regular state file (as a separate container within the
@@ -249,3 +140,113 @@ These values are especially useful when dealing with Cartesian grids.
 The calculation is activated by
 
     CalcMaxPartDisplacement = T
+
+### Time-averaged Fields
+At each `Analyze_dt` and at the end of the simulation, additional time-averaged field properties can be written to `*_TimeAvg_*.h5`
+by enabling 
+
+    CalcTimeAverage = T
+
+where the averaging will take place over the time spanned between two `Analyze_dt` outputs. The time-averaged values and
+fluctuations are selected via `VarNameAvg` and `VarNameFluc`, depending on the equation system that is solved (Poisson or Maxwell).
+These properties are stored in the same format as the solution polynomial of degree $N$, i.e., $(N+1)^{3}$ data points for each cell.
+For Maxwell's equations, the following properties are available
+
+    VarName{Avg,Fluc} = ElectricFieldX
+    VarName{Avg,Fluc} = ElectricFieldY
+    VarName{Avg,Fluc} = ElectricFieldZ
+    VarName{Avg,Fluc} = MagneticFieldX
+    VarName{Avg,Fluc} = MagneticFieldY
+    VarName{Avg,Fluc} = MagneticFieldZ
+    VarName{Avg,Fluc} = Phi
+    VarName{Avg,Fluc} = Psi
+    VarName{Avg,Fluc} = ElectricFieldMagnitude
+    VarName{Avg,Fluc} = MagneticFieldMagnitude
+    VarName{Avg,Fluc} = PoyntingVectorX
+    VarName{Avg,Fluc} = PoyntingVectorY
+    VarName{Avg,Fluc} = PoyntingVectorZ
+    VarName{Avg,Fluc} = PoyntingVectorMagnitude
+
+and for Poisson's equation
+
+    VarName{Avg,Fluc} = Phi
+    VarName{Avg,Fluc} = ElectricFieldX
+    VarName{Avg,Fluc} = ElectricFieldY
+    VarName{Avg,Fluc} = ElectricFieldZ
+    VarName{Avg,Fluc} = ElectricFieldMagnitude
+
+
+
+In case of a PIC simulation, the particle-grid deposited properties (via the user-selected deposition method) are also available via
+`VarNameAvg` and `VarNameFluc`
+
+    VarName{Avg,Fluc} = PowerDensityX-Spec0x
+    VarName{Avg,Fluc} = PowerDensityY-Spec0x
+    VarName{Avg,Fluc} = PowerDensityZ-Spec0x
+    VarName{Avg,Fluc} = PowerDensity-Spec0x
+    VarName{Avg,Fluc} = ChargeDensity-Spec0x
+    VarName{Avg,Fluc} = ChargeDensityX-Spec0x
+    VarName{Avg,Fluc} = ChargeDensityY-Spec0x
+    VarName{Avg,Fluc} = ChargeDensityZ-Spec0x
+    VarName{Avg,Fluc} = ChargeDensity-Spec0x
+
+which must be supplied for each particle species `x` separately.
+
+(sec:sampled-flow-field-and-surface-variables)=
+## Particle Flow and Surface Sampling
+
+Flow field and surface outputs are available when the DSMC, BGK and FP methods are utilized (standalone or coupled with PIC) and
+stored in `*_DSMCState_*.h5`. A sampling over a certain number of iterations is performed to calculate the average macroscopic
+values such as number density, bulk velocity and temperature from the microscopic particle information. Two variants are available
+in PICLas, allowing to sample a certain amount of the simulation duration or to sample continuously during the simulation and
+output the result after the given number of iterations.
+
+The first variant is usually utilized to sample at the end of a simulation, when the steady state condition is reached. The first
+parameter `Part-TimeFracForSampling` defines the percentage that shall be sampled relative to the simulation end time $T_\mathrm{end}$
+(Parameter: `TEnd`)
+
+    Part-TimeFracForSampling = 0.1
+    Particles-NumberForDSMCOutputs = 2
+
+`Particles-NumberForDSMCOutputs` defines the number of outputs during the sampling time. Example: The simulation end time is
+$T_\mathrm{end}=1$, thus sampling will begin at $T=0.9$ and the first output will be written at $T=0.95$. At this point the sample
+will NOT be resetted but continued. Therefore, the second and last output at $T=T_\mathrm{end}=1.0$ is not independent of the
+previous result but contains the sample of the complete sampling duration. It should be noted that if a simulation is continued
+at e.g. $T=0.95$, sampling with the given parameters will begin immediately.
+
+The second variant can be used to produce outputs for unsteady simulations, while still to be able to sample for a number of
+iterations (Parameter: `Part-IterationForMacroVal`). The first two flags allow to enable the output of flow field/volume and
+surface values, respectively.
+
+    Part-WriteMacroVolumeValues = T
+    Part-WriteMacroSurfaceValues = T
+    Part-IterationForMacroVal = 100
+
+Example: The simulation end time is $T_\mathrm{end}=1$ with a time step of $\Delta t = 0.001$. With the parameters given above,
+we would sample for 100 iterations up to $T = 0.1$ and get the first output. Afterwards, the sample is deleted and the sampling
+begins anew for the following output at $T=0.2$. This procedure is repeated until the simulation end, resulting in 10 outputs with
+independent samples.
+
+Parameters indicating the quality of the simulation (e.g. the maximal collision probability in case of DSMC) can be enabled by
+
+    Particles-DSMC-CalcQualityFactors = T
+
+Output and sampling on surfaces can be enabled by
+
+    Particles-DSMC-CalcSurfaceVal = T
+
+By default this will include the species-specific impact counter per iteration of simulation particles, the force per area in $x$,
+$y$, and $z$ and the heat flux. The output of the surface-sampled data is written to `*_DSMCSurfState_*.h5`. Additional surface
+values can be sampled by using
+
+    CalcSurfaceImpact = T
+
+which calculates the species-dependent averaged impact energy (trans, rot, vib, elec), impact vector, impact obliqueness angle
+(between particle trajectory and surface normal vector, e.g. an impact vector perpendicular to the surface corresponds to an
+impact angle of $0^{\circ}$), number of real particle impacts over the sampling duration and number of real particle impacts
+per area per second.
+
+## Integral Variables
+
+WIP, PartAnalyze/FieldAnalyze
+

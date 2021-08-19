@@ -3,7 +3,7 @@
 The following chapter describes the installation procedure on a Linux machine requiring root access. This includes the installation
 of required prerequisites, setting up MPI and HDF5. Please note that high-performance clusters usually have a module environment,
 where you have to load the appropriate modules instead of compiling them yourself. The module configuration for some of the clusters
-used by the research group are given in Chapter {ref}`080_cluster_guide:Cluster Guidelines`.
+used by the research group are given in Chapter {ref}`cluster_guide:Cluster Guidelines`.
 In that case, you can jump directly to the description of the download and installation procedure of PICLas in Section
 {ref}`sec:optaining-the-source`.
 
@@ -11,7 +11,7 @@ In that case, you can jump directly to the description of the download and insta
 **PICLas** has been tested on various Linux distributions. This includes Ubuntu 14.04 LTS, 16.04 LTS and 18.04 LTS, 20.04 LTS
 20.10 and 21.04, OpenSUSE 42.1 and CentOS 7.
 For **tested combinations** of prerequisites (HDF5, OpenMPI, CMake etc.) and known problems that may occur, visit Chapter
-{ref}`100_appendix:Appendix`.
+{ref}`appendix:Appendix`.
 
 The suggested packages in this section can be replaced by self compiled versions. The required packages for the Ubuntu Linux
 distributions are listed in {numref}`tab:installation_prereqs_ubuntu` and for Centos Linux in
@@ -78,7 +78,7 @@ from the command line. For convenience, you can add this line to your `.bashrc`.
 
 ## Required Libraries
 
-For a list of tested library version combinations, see Chapter {ref}`100_appendix:Appendix`.
+For a list of tested library version combinations, see Chapter {ref}`appendix:Appendix`.
 
 ### Installing/setting up GCC
 
@@ -102,6 +102,7 @@ version to use with PICLas is *OpenMPI 2.1.5*. An example of properly set enviro
 
 For convenience, you can add these lines to your `.bashrc`.
 
+(sec:hdf5-installation)=
 ### Installing/setting up HDF5
 
 An available installation of HDF5 can be utilized with PICLas. This requires properly setup environment variables and the
@@ -137,11 +138,11 @@ Depending whether HDF5 was installed using *configure* or *CMake*, different set
 
 * Configure
 
-    export HDF5_DIR = /opt/hdf5/1.X.X/
+        export HDF5_DIR = /opt/hdf5/1.X.X/
 
 * CMake
 
-    export HDF5_DIR = /opt/hdf5/1.X.X/shared/cmake/XXX
+        export HDF5_DIR = /opt/hdf5/1.X.X/shared/cmake/XXX
 
 If your CMake version is above 3.9.X, CMake uses a new findPackage routine, requiring that **HDF5_ROOT** is set
 
@@ -156,12 +157,12 @@ The **PICLas** repository is available at GitHub. To obtain the most recent vers
 
 * Clone the **PICLas** repository from Github
 
-    git clone https://github.com/piclas-framework/piclas.git
+        git clone https://github.com/piclas-framework/piclas.git
 
 * Download **PICLas** from Github:
 
-    wget https://github.com/piclas-framework/piclas/archive/master.tar.gz
-    tar xzf master.tar.gz
+        wget https://github.com/piclas-framework/piclas/archive/master.tar.gz
+        tar xzf master.tar.gz
 
 Note that cloning **PICLas** from GitHub may not be possible on some machines, as e.g. the HLRS at the University of Stuttgart
 restricts internet access. Please refer to section {ref}`sec:cloning-at-hlrs` of this user guide.
@@ -172,9 +173,9 @@ restricts internet access. Please refer to section {ref}`sec:cloning-at-hlrs` of
 * Change into the **PICLas** directory
 * Create a new subdirectory and use CMake to configure and compile the code
 
-    mkdir build; cd build
-    ccmake ..
-    make
+        mkdir build; cd build
+        ccmake ..
+        make
 
 For a list of all compiler options visit Section {ref}`sec:compiler-options`. Finally, the executables **PICLas** and **piclas2vtk**
 are contained in your **PICLas** directory in `build/bin/`.

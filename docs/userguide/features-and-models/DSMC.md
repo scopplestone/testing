@@ -258,7 +258,7 @@ species (e.g. for monatomic {cite}`NISTASD`, diatomic {cite}`Huber1979`, polyato
 database `DSMCSpecies_electronic_state_full_Data.h5` can be found in e.g.
 `piclas/regressioncheck/checks/NIG_Reservoir/CHEM_EQUI_TCE_Air_5Spec`, where the energy levels are stored in containers and
 accessed via the species name, e.g. `Part-Species1-SpeciesName=N2`. Each level is described by its degeneracy in the first column
-and by the energy in [J] in the seconed column. To include electronic excitation in the simulation, the following parameters are
+and by the energy in [J] in the second column. To include electronic excitation in the simulation, the following parameters are
 required
 
     Particles-DSMC-ElectronicModel  = 0     ! No electronic energy is considered (default)

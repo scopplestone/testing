@@ -1,8 +1,5 @@
 # Introduction
 
- [**PICLas**](https://github.com/piclas-framework/piclas)  is a three-dimensional simulation
- framework for Particle-in-Cell, Direct Simulation Monte Carlo and other particle methods that can be coupled for
- the simulation of collisional plasma flows.
  It features a high-order discontinuous 
  Galerkin (DG) simulation module for the solution of the time-dependent Maxwell 
  equations on unstructured hexahedral elements in three space dimensions. 
@@ -27,12 +24,13 @@
 This user guide is organized to both guide the first steps as well as provide a complete overview of 
 the simulation code's features from a user and a developer point of view.
 
-* Chapter {ref}`010_installation:Installation` contains step by step instructions from obtaining the source 
+* Chapter {ref}`installation:Installation` contains step by step instructions from obtaining the source 
   code up to running a first simulation and visualizing the simulation results. In addition, it 
   provides an overview of the whole simulation framework and the currently implemented features.
-* Chapter {ref}`020_workflow:Workflow` outlines the workflow starting with mesh generation and concluding with the visualization of results produced with **PICLas**.
+* Chapter {ref}`meshing:Mesh Generation` describes the preprocessing step of mesh generation
+* Chapter {ref}`workflow:Workflow` outlines the workflow and the visualization of results produced with **PICLas**.
 * Chapter {ref}`features-and-models/index:Features & Models` shall serve as a reference for the models and features implemented in **PICLas**.
-* Chapter {ref}`040_visu_output:Visualization & Output` presents the options and parameters for the output of particle data, field and flow variables.
-* Chapter {ref}`050_tools:Tools` lists tools within the **PICLas** repository, including the post-processing tools.
+* Chapter {ref}`visu_output:Visualization & Output` presents the options and parameters for the output of particle data, field and flow variables.
+* Chapter {ref}`tools:Tools` lists tools within the **PICLas** repository, including the post-processing tools.
 * Simulation tutorials are contained in Chapter {ref}`tutorials/index:Tutorials`.
-* Cluster-specific user guidelines are given in Chapter {ref}`080_cluster_guide:Cluster Guidelines`.
+* Cluster-specific user guidelines are given in Chapter {ref}`cluster_guide:Cluster Guidelines`.
