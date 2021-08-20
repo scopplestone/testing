@@ -13,7 +13,8 @@ The documentation of PICLas can be found in the [User Guide](https://testing-pic
 
 ## Installation
 
-The installation of PICLas is described [here](https://testing-piclas.readthedocs.io/en/latest/installation.html)
+The installation of PICLas is part of the [User Guide](https://testing-piclas.readthedocs.io/)
+and can be found [here](https://testing-piclas.readthedocs.io/en/latest/installation.html)
 
 ## Regression Testing
 
