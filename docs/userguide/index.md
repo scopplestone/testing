@@ -15,7 +15,7 @@ the simulation of collisional plasma flows.
 It features a high-order discontinuous Galerkin (DG) simulation module for the solution of the time-dependent Maxwell equations on
 unstructured hexahedral elements in three space dimensions.
 The code was specifically designed for very high order accurate simulations on massively parallel systems.
-It is licensed under GPLv3, written in Fortran and parallelized with MPI. Implemented features are
+It is licensed under GPLv3, written in Fortran and parallelized with MPI.
 
 ```{toctree}
 ---

@@ -3,7 +3,7 @@
 PICLas comes with a vast variety of models and methods. Originally being centered around Particle-in-Cell (PIC) and Direct
 Simulation Monte Carlo (DSMC) methods, PICLas has been extended to other particle-based methods, namely Bhatnagar-Gross-Krook (BGK)
 and Fokker-Planck (FP) models.
-Each of these models, some of which can be combined, offer distinctive features.
+Each of these models, some of which can be combined, offer distinctive features such as
 
 * Coupled Particle-in-Cell with Direct Simulation Monte Carlo methods
 * Particle-based Bhatnagar-Gross-Krook (Ellipsoidal Statistical, Shakov, Unified) and Fokker-Planck (Cubic, Ellipsoidal
