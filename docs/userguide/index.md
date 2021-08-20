@@ -31,7 +31,6 @@ features-and-models/index.md
 visu_output.md
 tools.md
 tutorials/index.md
-unittest.md
 cluster_guide.md
 appendix.md
 references.md
