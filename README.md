@@ -9,29 +9,11 @@ If you use PICLas for publications or presentations in science, please support t
 
 ## PICLas Documentation
 
-The documentation is a work in progress. For an installation guide please refer to the documentation.
+The documentation of PICLas can be found [here](testing-piclas.readthedocs.io)
 
-1. [Introduction](doc/userguide/000_userguide.md)
-2. [Installation](doc/userguide/010_installation.md)
-3. [Workflow](doc/userguide/020_workflow.md)
-4. [Features & Models](doc/userguide/030_features_models.md)
-5. [Visualization & Output](doc/userguide/040_visu_output.md)
-6. [Tools](doc/userguide/050_tools.md)
-7. [Tutorials](doc/userguide/060_tutorials.md)
-8. [Development Guide](doc/userguide/080_cluster_guide.md)
+## Installation
 
-A PDF file can be generated simply by executing *make* in the *doc/userguide/* folder. This requires `pandoc`, `pandoc-citeproc` and `LaTeX`.
-More information about pandoc and its installation can be found [here](https://pandoc.org/installing.html).
-
-An automatically generated documentation using doxygen can be produced in *doc/doxygen/* by executing the `builddoxy.sh` script.
-This requires the `doxygen` package to be installed and is useful to get an overview over the code structure with call graphs.
-The resulting documentation can be viewed by opening the `piclas/doc/doxygen/doxygen/html/index.html` file in a browser.
-
-The tools are known to work with the following software versions:
-
-* OpenMPI > 1.8
-* HDF5 > 1.8.13
-* CMake > 3.0.0
+The installation of PICLas is described in the [User Guide](testing-piclas.readthedocs.io/en/latest/installation.html)
 
 ## Regression Testing
 
@@ -41,10 +23,10 @@ For information about the regression testing see [REGGIE](REGGIE.md).
 
 PICLas uses several external libraries as well as auxiliary functions from open source projects, including:
 
-* [HDF5](https://www.hdfgroup.org/)
-* [MPI](http://www.mcs.anl.gov/research/projects/mpi/)
-* [LAPACK](http://www.netlib.org/lapack/)
 * [cmake](https://www.cmake.org)
+* [LAPACK](http://www.netlib.org/lapack/)
+* [MPI](http://www.mcs.anl.gov/research/projects/mpi/)
+* [HDF5](https://www.hdfgroup.org/)
 
 ## I need help or further information:
 
