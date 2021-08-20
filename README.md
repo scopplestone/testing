@@ -2,11 +2,10 @@
 
 # Welcome to PICLas
 
-The code is licensed under the GNU General Public License V3.
+The PICLas code is licensed under the [GNU General Public License v3.0](http://fsf.org/).
 The licence can be found in [LICENCE.md](LICENCE.md) and the list of contributors in [CONTRIBUTORS.md](CONTRIBUTORS.md).
-Among other things, PICLas is a scientific project.
-If you use PICLas for publications or presentations in science, please support the project by citing our publications given in
-[REFERENCE.md](REFERENCE.md).
+Among other things, PICLas is a scientific project and if you use PICLas for publications or presentations in science, please
+support the project by citing our publications given in [REFERENCE.md](REFERENCE.md).
 
 ## PICLas Documentation
 
