@@ -23,6 +23,13 @@ project = 'PICLas User Guide'
 copyright = '2021, PICLas Developers'
 author = 'Institute for Aerodynamics and Gas Dynamics (University of Stuttgart), Institute for Space Systems (University of Stuttgart), boltzplatz - Numerical Plasma Dynamics'
 
+# latex config
+latex_documents = [
+    (master_doc, 'foo.tex', 'Project',
+     author.replace(', ', '\\and ').replace(' and ', '\\and and '),
+     'manual'),
+]
+
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
