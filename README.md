@@ -3,9 +3,10 @@
 # Welcome to PICLas
 
 The code is licensed under the GNU General Public License V3.
-The licence can be found in [LICENCE](LICENCE.md) and the list of contributors in [CONTRIBUTORS](CONTRIBUTORS.md).
+The licence can be found in [LICENCE.md](LICENCE.md) and the list of contributors in [CONTRIBUTORS.md](CONTRIBUTORS.md).
 Among other things, PICLas is a scientific project.
-If you use PICLas for publications or presentations in science, please support the project by citing our publications given in [references](REFERENCE.md).
+If you use PICLas for publications or presentations in science, please support the project by citing our publications given in
+[REFERENCE.md](REFERENCE.md).
 
 ## PICLas Documentation
 
@@ -18,7 +19,7 @@ and can be found [here](https://testing-piclas.readthedocs.io/en/latest/installa
 
 ## Regression Testing
 
-For information about the regression testing see [REGGIE](REGGIE.md).
+An overview of the regression tests used for continuous integration is given in [REGGIE.md](REGGIE.md).
 
 ## Used libraries
 
@@ -33,6 +34,7 @@ PICLas uses several external libraries as well as auxiliary functions from open 
 
 * Academic
   * [IAG - Numerics Research Group](https://www.iag.uni-stuttgart.de/en/working-groups/numerical-methods/)
-  * [IRS - Numerical Modelling and Simulation Group](https://www.irs.uni-stuttgart.de/forschung/raumtransporttechnologie/numerische_modellierung_und_simulation/)
+  * [IRS - Numerical Modelling and Simulation Group](https://www.irs.uni-stuttgart.de/en/research/space-transport-technology/numerical-modeling-and-simulations/)
   * [HOPR (High Order Preprocessor)](https://www.hopr-project.org/index.php/Home)
-* Simulation service & training: [boltzplatz - numerical plasma dynamics GmbH](https://boltzplatz.eu)
+* Simulation service & training
+  * [boltzplatz - numerical plasma dynamics GmbH](https://boltzplatz.eu)
