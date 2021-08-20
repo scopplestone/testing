@@ -112,7 +112,7 @@ converted to 4 hexahedra, resulting in increased number of elements.
 
 *Note: This tutorial was last updated/used: June 2016*
 
-[MeshGems-Hexa](http://www.meshgems.com/volume-meshing-meshgems-hexa.html) is proprietary automated all-hex mesh generator.
+[MeshGems-Hexa](https://www.meshgems.com/volume-meshing-meshgems-hexa.html) is proprietary automated all-hex mesh generator.
 The algorithm can be used a plug-in within the open-source platform [SALOME](https://www.salome-platform.org/). At the time, we do
 not have a MeshGems-Hexa license and cannot give any support on mesh generation.
 

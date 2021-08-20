@@ -11,7 +11,7 @@ Each of these models, some of which can be combined, offer distinctive features 
 * Arbitrary order nodal polynomial tensor product basis using Gauss or Gauss Lobatto collocation points for electrostatic and
   electromagnetic solvers
 * Matching high order curved mesh generation from external mesh formats (CGNS, GMSH) or
-  simple analytic blocks via the open source preprocessor [HOPR](http://hopr-project.org) {cite}`Hindenlang2015`
+  simple analytic blocks via the open source preprocessor [HOPR](https://github.com/hopr-framework/hopr) {cite}`Hindenlang2015`
 * Non-conforming interfaces {cite}`Sonntag2017` based on the mortar approach {cite}`Kopriva2001,Bui2012` (electromagnetic solver)
 * Non-reflecting boundary conditions via CFS-PMLs {cite}`Copplestone2017` (electromagnetic solver)
 * Automatic domain decomposition for parallel simulations based on a space filling curve
@@ -27,7 +27,7 @@ the simulation code's features from a user and a developer point of view.
   code up to running a first simulation and visualizing the simulation results. In addition, it
   provides an overview of the whole simulation framework and the currently implemented features.
 * Chapter {ref}`meshing:Mesh Generation` describes the preprocessing step of creating mesh files via the in-house tool
-  [HOPR](http://hopr-project.org) that also handles mesh formats created with external mesh generators
+  [HOPR](https://github.com/hopr-framework/hopr) that also handles mesh formats created with external mesh generators
 * Chapter {ref}`workflow:Workflow` outlines the workflow and the visualization of results produced with **PICLas**.
 * Chapter {ref}`features-and-models/index:Features & Models` shall serve as a reference for the models and features implemented in **PICLas**.
 * Chapter {ref}`visu_output:Visualization & Output` presents the options and parameters for the output of particle data, field and flow variables.
