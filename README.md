@@ -7,14 +7,10 @@ The licence can be found in [LICENCE.md](LICENCE.md) and the list of contributor
 Among other things, PICLas is a scientific project and if you use PICLas for publications or presentations in science, please
 support the project by citing our publications given in [REFERENCE.md](REFERENCE.md).
 
-## PICLas Documentation
+## PICLas Documentation and Installation
 
-The documentation of PICLas can be found in the [User Guide](https://testing-piclas.readthedocs.io/)
-
-## Installation
-
-The installation of PICLas is part of the [User Guide](https://testing-piclas.readthedocs.io/)
-and can be found [here](https://testing-piclas.readthedocs.io/en/latest/installation.html)
+The documentation of PICLas can be found in the [User Guide](https://piclas.readthedocs.io/), where the installation procedure is
+described in 2nd [Chapter](https://piclas.readthedocs.io/en/latest/installation.html).
 
 ## Regression Testing
 
