@@ -68,7 +68,14 @@ html_theme_options = {
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
+# For scaling, simply comment in the following line and html_css_files = [ ..
+# and adjust the file _static/custom.css to your liking
 #html_static_path = ['_static']
+
+# HTML option added in Sphinx 1.8.0b1 (released Sep 2018)
+#html_css_files = [
+    #'custom.css',
+#]
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
