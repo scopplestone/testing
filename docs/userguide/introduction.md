@@ -26,7 +26,8 @@ the simulation code's features from a user and a developer point of view.
 * Chapter {ref}`installation:Installation` contains step by step instructions from obtaining the source
   code up to running a first simulation and visualizing the simulation results. In addition, it
   provides an overview of the whole simulation framework and the currently implemented features.
-* Chapter {ref}`meshing:Mesh Generation` describes the preprocessing step of mesh generation
+* Chapter {ref}`meshing:Mesh Generation` describes the preprocessing step of creating mesh files via the in-house tool
+  [HOPR](http://hopr-project.org) that also handles mesh formats created with external mesh generators
 * Chapter {ref}`workflow:Workflow` outlines the workflow and the visualization of results produced with **PICLas**.
 * Chapter {ref}`features-and-models/index:Features & Models` shall serve as a reference for the models and features implemented in **PICLas**.
 * Chapter {ref}`visu_output:Visualization & Output` presents the options and parameters for the output of particle data, field and flow variables.
