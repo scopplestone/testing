@@ -26,7 +26,7 @@ author = 'Institute for Aerodynamics and Gas Dynamics (University of Stuttgart),
 # latex config
 master_doc = 'index'
 latex_documents = [
-    (master_doc, 'foo.tex', 'Project',
+    (master_doc, 'foo.tex', project,
      author.replace(', ', '\\and ').replace(' and ', '\\and and '),
      'manual'),
 ]
