@@ -9,11 +9,11 @@ If you use PICLas for publications or presentations in science, please support t
 
 ## PICLas Documentation
 
-The documentation of PICLas can be found [here](testing-piclas.readthedocs.io)
+The documentation of PICLas can be found in the [User Guide](https://testing-piclas.readthedocs.io/)
 
 ## Installation
 
-The installation of PICLas is described in the [User Guide](testing-piclas.readthedocs.io/en/latest/installation.html)
+The installation of PICLas is described [here](https://testing-piclas.readthedocs.io/en/latest/installation.html)
 
 ## Regression Testing
 
