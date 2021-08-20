@@ -78,7 +78,7 @@ and as the `Tag name`, the new version number is used, e.g.,
     v1.X.X
 
 The tag is then created from the **master** branch repository and the `Message` is left empty. The release notes, which were used 
-ithin the corresponding milestone, shall be given in the following format
+within the corresponding milestone, shall be given in the following format
 
     ## Release 1.X.X
 

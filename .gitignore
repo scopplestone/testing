@@ -2,3 +2,4 @@ _build/
 figures/
 Makefile
 make.bat
+*.pdf
