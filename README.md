@@ -10,7 +10,7 @@ support the project by citing our publications given in [REFERENCE.md](REFERENCE
 ## PICLas Documentation and Installation
 
 The documentation of PICLas can be found in the [User Guide](https://piclas.readthedocs.io/), where the installation procedure is
-described in 2nd [Chapter](https://piclas.readthedocs.io/en/latest/installation.html).
+described in the 2nd [Chapter](https://piclas.readthedocs.io/en/latest/installation.html).
 
 ## Regression Testing
 
