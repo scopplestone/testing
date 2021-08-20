@@ -5,7 +5,7 @@ When changing the guides, build the html and pdf files locally before committing
 
 **Prerequisites**
 
-First, install the required prerequisites. Install python3 and make sure that pip (third-party Python packages) is installed.
+First, install the required prerequisites. Install *python3* and make sure that pip (third-party Python packages) is installed.
 If you have an old version of, e.g., Ubuntu visit [this website](https://phoenixnap.com/kb/how-to-install-python-3-ubuntu).
 
     sudo apt install python3-pip
@@ -18,6 +18,11 @@ Navigate to the user guide directory from the PICLas top level directory
 Run pip to install the required extensions and packages for compiling the user guide (only once)
 
     python3 -m pip install --exists-action=w --no-cache-dir -r ../requirements.txt
+
+Make sure that *latexmk* is installed on the system for compiling the PDF version of the user guide. For Ubuntu, follow
+[this link](https://zoomadmin.com/HowToInstall/UbuntuPackage/latexmk) for installation.
+
+    sudo apt-get install latexmk
 
 
 **HTML Version**
