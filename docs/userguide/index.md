@@ -33,13 +33,34 @@ tools.md
 tutorials/index.md
 cluster_guide.md
 appendix.md
-references.md
 ```
 
+```{toctree}
+---
+maxdepth: 1
+caption: Developer Guide
+numbered:
+---
+developerguide/index.md
+developerguide/git_workflow.md
+developerguide/building_guide.md
+developerguide/styleguide.md
+developerguide/functions_and_subroutines.md
+developerguide/mpi.md
+developerguide/reggie.md
+developerguide/unittest.md
+developerguide/compiler.md
+developerguide/tools.md
+developerguide/performance.md
+developerguide/examples.md
+```
 
-
-
-
-
-
+```{toctree}
+---
+maxdepth: 1
+caption: References
+numbered:
+---
+references.md
+```
 

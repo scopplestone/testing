@@ -83,7 +83,7 @@ html_logo = '../logo.png'
 
 # -- Bibliography ------------------------------------------------------------
 
-bibtex_bibfiles = ['../references.bib']
+bibtex_bibfiles = ['references.bib']
 
 # -- Section labelling -------------------------------------------------------
 # Make sure the target is unique

@@ -1,0 +1,33 @@
+# Organization
+
+This guide is organized to guide the first implementation steps as well as provide a complete overview of 
+the simulation code's features from a developer's point of view.
+
+Table of Contents
+
+1. Gitlab Workflow
+   1. Issues & Milestones
+   2. Release & Deploy
+2. Style Guide
+3. MPI Implementation
+4. Regression Testing
+5. Compiler Options
+
+* The first Chapter {ref}`developerguide/git_workflow:GitLab Workflow` shall give an overview over the development workflow within
+  the Gitlab environment, and the necessary steps to create a release, deploy updates to the Collaborative Numerics Group and GitHub.
+* The second Chapter {ref}`developerguide/styleguide:Style Guide` describes the rules and guidelines regarding code development 
+  such as how the header of functions and subroutines look like.
+* Chapter {ref}`developerguide/building_guide:Building the User Guide` describes how to build the html and pdf files
+  locally before committing changes to the repository.
+* Chapter {ref}`developerguide/functions_and_subroutines:Useful Functions` contains a summary of useful functions
+  and subroutines that might be re-used in the future.
+* Chapter {ref}`developerguide/mpi:MPI Implementation` describes how PICLas subroutines and functions are parallelized.
+* Chapter {ref}`developerguide/reggie:Regression Testing` summarizes the PICLas' continuous integration through regression testing.
+* Chapter {ref}`developerguide/unittest:Unit Tests` shows which unit tests are used to test individual key components of the source code.
+* Chapter {ref}`developerguide/compiler:Compiler Options` gives an overview of compiler options that are used in PICLas and their
+  purpose.
+* Chapter {ref}`developerguide/tools:Developer Tools` gives an overview over the tools and scripts for developers.
+* Chapter {ref}`developerguide/performance:Performance Analysis` describes different tools that can be utilized for measuring the
+  computational performance
+* Chapter {ref}`developerguide/examples:Markdown Examples` gives a short overview of how to include code, equations, figures, tables
+  etc. in the user and developer guides in Markdown.
