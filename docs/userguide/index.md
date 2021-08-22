@@ -19,27 +19,16 @@ It is licensed under GPLv3, written in Fortran and parallelized with MPI.
 
 ```{toctree}
 ---
-maxdepth: 1
+maxdepth: 2
 caption: User Guide
-numbered:
 ---
 introduction.md
-installation.md
-meshing.md
-workflow.md
-features-and-models/index.md
-visu_output.md
-tools.md
-tutorials/index.md
-cluster_guide.md
-appendix.md
 ```
 
 ```{toctree}
 ---
-maxdepth: 1
+maxdepth: 2
 caption: Developer Guide
-numbered:
 ---
 developerguide/index.md
 ```
@@ -48,7 +37,6 @@ developerguide/index.md
 ---
 maxdepth: 1
 caption: References
-numbered:
 ---
 references.md
 ```

@@ -1,4 +1,21 @@
-# Introduction
+# User Guide
+
+```{toctree}
+---
+maxdepth: 1
+caption: Table of Contents
+numbered:
+---
+installation.md
+meshing.md
+workflow.md
+features-and-models/index.md
+visu_output.md
+tools.md
+tutorials/index.md
+cluster_guide.md
+appendix.md
+```
 
 PICLas comes with a vast variety of models and methods. Originally being centered around Particle-in-Cell (PIC) and Direct
 Simulation Monte Carlo (DSMC) methods, PICLas has been extended to other particle-based methods, namely Bhatnagar-Gross-Krook (BGK)

@@ -4,6 +4,7 @@
 ---
 maxdepth: 1
 caption: Table of Contents
+numbered:
 ---
 git_workflow.md
 building_guide.md
