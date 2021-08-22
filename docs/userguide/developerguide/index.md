@@ -1,17 +1,25 @@
-# Organization
+# Developer Guide
+
+```{toctree}
+---
+maxdepth: 1
+caption: Table of Contents
+---
+git_workflow.md
+building_guide.md
+styleguide.md
+functions_and_subroutines.md
+mpi.md
+reggie.md
+unittest.md
+compiler.md
+tools.md
+performance.md
+examples.md
+```
 
 This guide is organized to guide the first implementation steps as well as provide a complete overview of 
 the simulation code's features from a developer's point of view.
-
-Table of Contents
-
-1. Gitlab Workflow
-   1. Issues & Milestones
-   2. Release & Deploy
-2. Style Guide
-3. MPI Implementation
-4. Regression Testing
-5. Compiler Options
 
 * The first Chapter {ref}`developerguide/git_workflow:GitLab Workflow` shall give an overview over the development workflow within
   the Gitlab environment, and the necessary steps to create a release, deploy updates to the Collaborative Numerics Group and GitHub.
