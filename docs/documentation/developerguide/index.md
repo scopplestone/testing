@@ -1,5 +1,8 @@
 # Developer Guide
 
+The developer guide is intended to be for people who come in more close contact with PICLas, i.e., code developers and performance
+analysts as well as people who are tasked with working or extending the documentation of PICLas.
+
 ```{toctree}
 ---
 maxdepth: 1
@@ -26,7 +29,7 @@ the simulation code's features from a developer's point of view.
   the Gitlab environment, and the necessary steps to create a release, deploy updates to the Collaborative Numerics Group and GitHub.
 * The second Chapter {ref}`developerguide/styleguide:Style Guide` describes the rules and guidelines regarding code development 
   such as how the header of functions and subroutines look like.
-* Chapter {ref}`developerguide/building_guide:Building the User Guide` describes how to build the html and pdf files
+* Chapter {ref}`developerguide/building_guide:Building the Documentation` describes how to build the html and pdf files
   locally before committing changes to the repository.
 * Chapter {ref}`developerguide/functions_and_subroutines:Useful Functions` contains a summary of useful functions
   and subroutines that might be re-used in the future.
