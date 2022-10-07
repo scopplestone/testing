@@ -1,3 +1,4 @@
+(sec:DSMC)=
 # Direct Simulation Monte Carlo
 
 To enable the simulation with DSMC, an appropriate time discretization method including the DSMC module should be chosen before the
@@ -251,12 +252,12 @@ using an instantaneous translational cell temperature.
 (sec:DSMC-electronic-relaxation)=
 ### Electronic Relaxation
 
-For the modelling of electronic relaxation, two models are available: the model by Liechty et al. {cite}`Liechty2011a`, where each
+For the modelling of electronic relaxation, three models are available: the model by Liechty et al. {cite}`Liechty2011a` and a BGK Landau-Teller like model {cite}`Pfeiffer2018b`,{cite}``Pfeiffer2018b``', where each
 particle has a specific electronic state and the model by Burt and Eswar {cite}`Burt2015b`, where each particle has an electronic
-distribution function attached. Both models utilize tabulated energy levels, which can be found in literature for a wide range of
+distribution function attached. The three models utilize tabulated energy levels, which can be found in literature for a wide range of
 species (e.g. for monatomic {cite}`NISTASD`, diatomic {cite}`Huber1979`, polyatomic {cite}`Herzberg1966` molecules). An example
 database `DSMCSpecies_electronic_state_full_Data.h5` can be found in e.g.
-`piclas/regressioncheck/checks/NIG_Reservoir/CHEM_EQUI_TCE_Air_5Spec`, where the energy levels are stored in containers and
+`piclas/regressioncheck/NIG_Reservoir/CHEM_EQUI_TCE_Air_5Spec`, where the energy levels are stored in containers and
 accessed via the species name, e.g. `Part-Species1-SpeciesName=N2`. Each level is described by its degeneracy in the first column
 and by the energy in [J] in the second column. To include electronic excitation in the simulation, the following parameters are
 required
@@ -264,6 +265,7 @@ required
     Particles-DSMC-ElectronicModel  = 0     ! No electronic energy is considered (default)
                                     = 1     ! Model by Liechty
                                     = 2     ! Model by Burt
+                                    = 4     ! BGK Landau-Teller like model
     Particles-DSMCElectronicDatabase = DSMCSpecies_electronic_state_full_Data.h5
 
 In case of a large number of electronic levels, their number can be reduced by providing a relative merge tolerance.
@@ -272,9 +274,16 @@ Levels those relative differences are below this parameter will be merged:
     EpsMergeElectronicState = 1E-3
 
 However, this option should be evaluated carefully based on the specific simulation case and tested against a zero/very
-low merge tolerance. Finally, the default relaxation probability can be adjusted by
+low merge tolerance. Finally, the default relaxation probability of 0.01 can be adjusted by
 
-    Particles-DSMC-ElecRelaxProb = 0.01
+    Part-Species$-ElecRelaxProb = 0.3
+
+Additionally, variable relaxation probabilities can be used. For each species where its value differs from the default relaxation probability,
+the following parameter needs to be defined
+
+    Part-Species3-ElecRelaxProb = 1.0
+    Part-Species4-ElecRelaxProb = 0.5
+    Part-Species5-ElecRelaxProb = 0.1
 
 An electronic state database can be created using a Fortran tool in `piclas/tools/electronic_data`. An alternative is to use the
 Python-based script discussed in Section {ref}`sec:tools-xsec-collision` and to adapt it to electronic energy levels.
@@ -310,12 +319,13 @@ A reaction is then defined by
 
 where the reaction model can be defined as follows
 
-| Model | Description                                       |
-| ----: | ------------------------------------------------- |
-|   TCE | Total Collision Energy: Arrhenius-based chemistry |
-|    QK | Quantum Kinetic: Threshold-based chemistry        |
-|  XSec | Cross-section based chemistry                     |
-| phIon | Photo-ionization (e.g. N + ph -> N$^+$ + e)       |
+|   Model   |                                   Description                                  |
+|   ----:   | -------------------------------------------------                              |
+|       TCE | Total Collision Energy: Arrhenius-based chemistry                              |
+|        QK | Quantum Kinetic: Threshold-based chemistry                                     |
+|      XSec | Cross-section based chemistry                                                  |
+|     phIon | Photo-ionization (e.g. N + ph -> N$^+$ + e)                                    |
+| phIonXSec | Photo-ionization (e.g. N + ph -> N$^+$ + e) with cross-section based chemistry |
 
 The reactants (left-hand side) and products (right-hand side) are defined by their respective species index. The photo-ionization
 reaction is a special case to model the ionization process within a defined volume by photon impact (see Section
@@ -346,7 +356,7 @@ activation energy [K]. These parameters can be defined in PICLas as follows
     DSMC-Reaction1-Activation-Energy_K=113200.0
 
 An example initialization file for a TCE-based chemistry model can be found in the regression tests (e.g.
-`regressioncheck/checks/NIG_Reservoir/CHEM_EQUI_TCE_Air_5Spec`).
+`regressioncheck/NIG_Reservoir/CHEM_EQUI_TCE_Air_5Spec`).
 
 ### Quantum Kinetic Chemistry (QK)
 
@@ -354,7 +364,7 @@ The Quantum Kinetic (QK) model {cite}`Bird2011` chooses a different approach and
 Currently, the QK model is only available for ionization and dissociation reactions. It is possible to utilize TCE- and QK-based
 reactions in the same simulation for different reactions paths for the same collision pair, such as the ionization and dissociation
 reactions paths (e.g. N$_2$ + e can lead to a dissociation with the TCE model and to an ionization with the QK model).
-An example setup can be found in the regression tests (e.g. `regressioncheck/checks/NIG_Reservoir/CHEM_QK_multi-ionization_C_to_C6+`).
+An example setup can be found in the regression tests (e.g. `regressioncheck/NIG_Reservoir/CHEM_QK_multi-ionization_C_to_C6+`).
 
 Besides the reaction model, reactants and products definition no further parameter are required for the reaction. However,
 the dissociation energy [eV] has to be defined on a species basis
@@ -374,7 +384,7 @@ reactions named by their products, e.g. `N2Ion1-electron-electron`.
 If the defined reaction cannot be found in the database, the code will abort. It should be noted that this model is not limited to
 the utilization with MCC or a background gas and can be used with conventional DSMC as an alternative chemistry model. Here, the
 probability will be added to the collision probability to reproduce the reaction rate. Examples of the utilization of this model
-can be found in the regression tests (e.g. `regressioncheck/checks/NIG_Reservoir/CHEM_RATES_XSec_Chem_H2-e`).
+can be found in the regression tests (e.g. `regressioncheck/NIG_Reservoir/CHEM_RATES_XSec_Chem_H2-e`).
 ### Backward Reaction Rates
 
 Backward reaction rates can be calculated for any given forward reaction rate by using the equilibrium constant

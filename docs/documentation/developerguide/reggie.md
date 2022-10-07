@@ -16,7 +16,7 @@ regression test is described there.
 
 Different tests are executed on check-in, during nightly or weekly testing. These tests are defined
 in the file *.gitlab-ci.yml* that is located in the top level repository directory of PICLas. In
-this file, various tests are defined, which are found under *regressioncheck/checks* and a summary
+this file, various tests are defined, which are found under *regressioncheck* and a summary
 of the different tests is given under https://github.com/piclas-framework/piclas/blob/master/REGGIE.md
 
 The automatic execution by *gitlab-runners* can be performed on any machine that is connected to the
@@ -72,8 +72,8 @@ sudo apt-get install openvpn openssl openssh-client
 sudo apt-get install liblapack3 liblapack-dev zlib1g-dev exuberant-ctags
 
 # for documentation
-sudo apt-get install pandoc pandoc-citeproc
-sudo apt-get install texlive-full
+sudo apt-get install texlive-base
+sudo apt-get install texlive-latex-extra
 
 # hdf5-file viewer
 sudo apt-get install hdfview 
@@ -118,7 +118,7 @@ rm hdf5-1.10.5.tar.bz2
 ```
 
 otherwise a module environment can be installed at this point, see
-`~/Flexi/piclas/tools/Setup_ModuleEnv/README.txt`, which is explained in detail in Chapter \ref{chap:tools} under Section \ref{sec:tools_module_env}.
+`~/piclas/tools/Setup_ModuleEnv/README.md`, which is explained in detail in Chapter {ref}`developerguide/tools:Developer Tools` under Section {ref}`developerguide/tools:Module Environment`.
 
 When no module environment is to be used on the server, the following commands must be places in the
 *.gitlab-ci.yml* file:
@@ -183,11 +183,11 @@ Latest tests on
     ```
     sudo gitlab-runner restart
     ```
-5. create ssh keys for normal user and set up password free access to gitlab (iag) and gitlab.com (reggie)
+5. create ssh keys for normal user and set up password free access to gitlab (https://piclas.boltzplatz.eu) and gitlab.com (reggie)
     ```
     ssh-keygen -t ecdsa -b 521
     ```
-    Add key to `Enabled deploy keys`. If multiple codes are on gitlab.com, add the key to one 
+    Add key to `Enabled deploy keys`. If multiple codes are on gitlab, add the key to one 
     repository and select the key on the other repositories via `Privately accessible deploy keys`.
 
     Clone a code from each platform to create known hosts then
@@ -296,7 +296,7 @@ check_interval = 0
       script:
         - if [ -z "${DO_DEPLOY}" ]; then exit ; fi
         - rm -rf piclas_github || true ;
-        - git clone -b master --single-branch git@gitlab.com:piclas/piclas.git piclas_github ;
+        - git clone -b master --single-branch git@piclas.boltzplatz.eu:piclas/piclas.git piclas_github ;
         - cd piclas_github ;
         - git remote add piclas-framework git@github.com:piclas-framework/piclas.git ;
         - git push --force --follow-tags piclas-framework master ;
